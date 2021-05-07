@@ -1,0 +1,74 @@
+.movie-modal {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--animation-duration) var(--timing-function);
+}
+
+.movie-modal.is-open {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.movie-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-modal__content {
+  transform: scale(0.5);
+  transition: transform var(--animation-duration) var(--timing-function);
+}
+
+.movie-modal.is-open .movie-modal__content {
+  transform: scale(1);
+}
+
+.movie-modal__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.movie-modal__button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color var(--animation-duration) var(--timing-function);
+  outline: none;
+  background-image: url('@images/icon-close.svg');
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
+
+.movie-modal__button:hover,
+.movie-modal__button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}

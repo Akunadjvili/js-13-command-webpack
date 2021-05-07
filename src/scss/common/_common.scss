@@ -1,0 +1,51 @@
+@import 'color-scheme';
+@import 'placeholders';
+@import 'container';
+
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: none;
+}
+body {
+  font-family: $primary-font;
+  margin: auto;
+  // min-width: 300px;
+  overflow-x: hidden;
+  // height: 100vh;
+
+  // width: 100vw;
+  //  height: 100vw;
+  // max-width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden,
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

@@ -1,0 +1,21 @@
+$trans-duration: 250ms;
+$trans-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+$primary-font: 'Roboto', sans-serif;
+
+$white: #ffffff;
+$text-accent-color: #ff6b08;
+$text-key-color: #8c8c8c;
+$text-footer-color: #545454;
+$bg-footer-color: #f7f7f7;
+$text-error-color: #ff001b;
+$black: #000000;
+$icon: #818181;
+$button-accent-color: #ff6b01;
+$header-overlay: rgba(0, 0, 0, 0.56);
+
+// Удалить перед началом работ
+$primary-text-color: $white;
+$secondary-text-color: $black;
+$alternate-text-color: #8c8c8c;
+$primary-accent-color: #ff6b01;
