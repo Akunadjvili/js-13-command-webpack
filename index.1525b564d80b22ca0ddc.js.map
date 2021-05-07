@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./index.js"],"names":[],"mappings":"kHAAA,sC","file":"index.1525b564d80b22ca0ddc.js","sourcesContent":["import 'modern-normalize/modern-normalize.css';\nimport './scss/entry.scss';\nimport '@scripts/index'\n\n"],"sourceRoot":""}

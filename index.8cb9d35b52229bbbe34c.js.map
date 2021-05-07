@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./js/index.js","webpack:///./index.js"],"names":["console","log"],"mappings":"8EAAAA,QAAQC,IAAI,gB,kCCAZ,sC","file":"index.8cb9d35b52229bbbe34c.js","sourcesContent":["console.log(\"in index v2\");","import 'modern-normalize/modern-normalize.css';\r\nimport './scss/entry.scss';\r\nimport '@scripts/index'\r\n\r\n"],"sourceRoot":""}
