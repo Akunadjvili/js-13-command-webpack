@@ -1,0 +1,96 @@
+.pagination-container {
+  @include for-size(mobile) {
+    padding: 20px 0 40px 0;
+  }
+  @include for-size(tablet) {
+    padding: 60px 0 60px 0;
+  }
+}
+
+.pgn__cards-holder {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  @include for-size(mobile) {
+    grid-template-columns: 280px;
+    grid-gap: 20px;
+  }
+  @include for-size(tablet) {
+    grid-template-columns: 294px 294px;
+    grid-gap: 30px;
+  }
+  @include for-size(desktop) {
+    grid-template-columns: 274px 274px 274px;
+    grid-gap: 30px;
+  }
+}
+
+.pgn__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+
+  @include for-size(tablet-only) {
+    margin-top: 40px;
+  }
+  @include for-size(tablet) {
+    margin-top: 60px;
+  }
+}
+
+.pgn__btn:not(:last-child),
+.pgn__btn--empty-start,
+.pgn__btn--empty-finish {
+  margin-right: 16px;
+}
+
+.pgn__btn {
+  border-radius: 5px;
+  padding: 0;
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
+  outline: 0px solid #ff6b08;
+}
+
+.pgn__btn--disable {
+  background-color: rgba(255, 0, 0, 0.26);
+  cursor: default;
+  pointer-events: none;
+}
+
+.pgn__btn--active {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #ff6b08;
+  color: #ffffff;
+}
+
+.pgn__btn--empty-start,
+.pgn__btn--empty-finish {
+  cursor: default;
+}
+
+.pgn__btn--previous,
+.pgn__btn--next {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pgn__btn--previous {
+  //   background-image: url('@images/arrow-left.svg');
+}
+.pgn__btn--next {
+  //   background-image: url('@images/arrow-right.svg');
+}
