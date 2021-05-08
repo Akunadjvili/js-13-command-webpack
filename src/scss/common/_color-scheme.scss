@@ -4,18 +4,31 @@ $trans-function: cubic-bezier(0.4, 0, 0.2, 1);
 $primary-font: 'Montserrat', sans-serif;
 
 $white: #ffffff;
-$text-accent-color: #ff6b08;
-$text-key-color: #8c8c8c;
-$text-footer-color: #545454;
-$bg-footer-color: #f7f7f7;
-$text-error-color: #ff001b;
 $black: #000000;
-$icon: #818181;
-$button-accent-color: #ff6b01;
-$header-overlay: rgba(0, 0, 0, 0.56);
+$text-accent-color: #dc56c5;
+$card-border-color: rgba(220, 86, 197, 0.3);
 
-// Удалить перед началом работ
+$main-background-overlay: #0e0e0e;
+
+$main-top-background-overlay: rgba(32, 13, 29, 0.6);
+$main-background-object-color: #212121;
+
+$card-background-overlay2: linear-gradient(
+  151.61deg,
+  rgba(196, 196, 196, 0.03) -7.48%,
+  rgba(196, 196, 196, 0) 106.62%
+);
+$main-background-object-color: #212121;
+$decoration-color: #939393;
+// background: rgba(255, 255, 255, 0.2);
+// backdrop-filter: blur(20px);
+
+$header-background-overlay: rgba(11, 11, 11, 0.5);
+$main-top-background-overlay: rgba(32, 13, 29, 0.6);
+
+$button-accent-color: #4c00fe;
+
+$modal-background-color: #fff2fd;
+
 $primary-text-color: $white;
-$secondary-text-color: $black;
-$alternate-text-color: #8c8c8c;
-$primary-accent-color: #ff6b01;
+$secondary-text-color: $main-background-overlay;

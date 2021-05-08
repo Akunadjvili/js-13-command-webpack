@@ -1,0 +1,12 @@
+<ul class="pgn__cards-holder"></ul>
+<div class="pgn__controls">
+    <button class="pgn__btn pgn__btn--previous"></button>
+    <button class="pgn__btn pgn__btn--pages"> </button>
+    <button class="pgn__btn pgn__btn--empty-start">...</button>
+    {{#repeat count}}
+    <button class="pgn__btn pgn__btn--pages"> {{this}} </button>
+    {{/repeat}}
+    <button class="pgn__btn pgn__btn--empty-finish">...</button>
+    <button class="pgn__btn pgn__btn--pages"> </button>
+    <button class="pgn__btn pgn__btn--next"></button>
+</div>
