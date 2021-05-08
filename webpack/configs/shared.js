@@ -9,7 +9,6 @@ module.exports = env => ({
   // entry: './entry.js',
   entry: {
     index: './index.js',
-    library: './library.js',
   },
   output: {
     path: paths.BUILD_DIR,

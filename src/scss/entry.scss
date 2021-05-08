@@ -7,18 +7,18 @@
 @import 'partials/dynamic/user-signin-form';
 @import 'partials/dynamic/user-signup-form';
 
-@import 'partials/static/page-header-index';
-@import 'partials/static/page-header-library';
+@import 'partials/static/page-header';
 @import 'partials/static/page-content';
 @import 'partials/static/page-spinner';
 @import 'partials/static/page-footer';
+@import 'partials/static/page-back-to-top';
 
 @import 'partials/static/page-default-modal';
 @import 'partials/dynamic/pagination';
 
-@import 'partials/dynamic/movie-item';
-@import 'partials/dynamic/movie-info-modal';
-@import 'partials/dynamic/movies-list';
+@import 'partials/dynamic/event-item';
+@import 'partials/dynamic/event-info-modal';
+@import 'partials/dynamic/events-list';
 
 @import 'partials/dynamic/team-info';
 
