@@ -1,0 +1,27 @@
+.team{
+  
+    background-color: $main-background-overlay;
+    color: $text-accent-color;
+    display: block;
+    align-items: center;
+
+    &-list{
+        @extend %list;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+       }
+
+}
+
+.team-member{
+    background-color: $modal-background-color;
+    border-top-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    margin-bottom: 20px;
+
+    &-link{
+        @extend %link;
+        color: $main-background-overlay
+        }
+}
