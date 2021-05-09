@@ -22,51 +22,24 @@
     height: 312px;
   }
 }
+.event-card__poster-container,
+.event-card__poster-container::before {
+  transition: all $trans-duration $trans-function;
+}
+.event-item:hover .event-card__poster-container {
+  box-shadow: 0px 6px 10px $card-border-color;
+}
 .event-item:hover .event-card__poster-container::before {
-  // border: 1px solid red;
   background-color: $card-border-color;
+  z-index: -1;
 }
 
-.card2 {
-  display: block;
-  top: 0px;
-  position: relative;
-  max-width: 262px;
-  background-color: #f2f8f9;
-  border-radius: 4px;
-  padding: 32px 24px;
-  margin: 12px;
-  text-decoration: none;
-  z-index: 0;
-  overflow: hidden;
-  border: 1px solid #f2f8f9;
-
-  &:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    top: -4px;
-    border: 1px solid #cccccc;
-    background-color: white;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -16px;
-    right: -16px;
-    background: #00838d;
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
-    transform: scale(2);
-    transform-origin: 50% 50%;
-    transition: transform 0.15s ease-out;
-  }
-
-  &:hover:before {
-    transform: scale(2.15);
-  }
+.event-item:hover .event-card__title,
+.event-item:hover .event-card__date,
+.event-item:hover .event-card__place-link {
+  // color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 8px 6px rgba(220, 86, 197, 0.8),
+    0px -5px 35px rgba(220, 86, 197, 0.3);
 }
 
 .event-card {
@@ -163,9 +136,9 @@
 }
 .event-card__place-link {
   margin-top: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  // justify-content: center;
+  // align-items: center;
   @extend %link;
   color: $white;
   font-family: $primary-font;
@@ -185,7 +158,7 @@
 }
 .event-card__place-link::before {
   content: '';
-  display: block;
+  display: inline-block;
   margin-right: 3px;
   background: url('@images/place.svg');
   background-repeat: no-repeat;
