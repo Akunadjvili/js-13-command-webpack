@@ -8,6 +8,17 @@
   border: 1px solid #dc56c5;
   box-sizing: border-box;
   border-radius: 10px 0px;
+  z-index: 9999;
+
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+
+  display: none;
+}
+
+.back_to_top-show {
+  display: block;
 }
 
 .back_to_top:hover {

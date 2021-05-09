@@ -1,4 +1,4 @@
 import './modal-authorization/modal-authorization';
 import "@scripts/pagination"
-import '@scripts/backToTopBtn'
+import '@scripts/BackToTopBtn'
 

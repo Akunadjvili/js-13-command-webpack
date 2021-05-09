@@ -54,7 +54,6 @@
     "fuse.js": "^6.4.6",
     "handlebars": "^4.7.6",
     "lodash.debounce": "^4.0.8",
-    "material-design-icons": "^3.0.1",
-    "vanilla-back-to-top": "^7.2.1"
+    "material-design-icons": "^3.0.1"
   }
 }
