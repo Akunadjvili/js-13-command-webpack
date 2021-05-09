@@ -1,0 +1,31 @@
+.back_to_top {
+  width: 40px;
+  height: 40px;
+  border-radius: 30% 0;
+  color: #dc56c5;
+  font-family: 'Montserrat', sans-serif;
+
+  border: 1px solid #dc56c5;
+  box-sizing: border-box;
+  border-radius: 10px 0px;
+  z-index: 9999;
+
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+
+  display: none;
+}
+
+.back_to_top-show {
+  display: block;
+}
+
+.back_to_top:hover {
+  background-color: #dc56c5;
+  color: #4c00fe;
+  border-color: #4c00fe;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: scale(1.1);
+}

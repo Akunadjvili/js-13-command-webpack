@@ -1,0 +1,7 @@
+{{#if data}}
+{{#each data}}
+{{> "./event.item.hbs" this}}
+{{/each}}
+{{else}}
+<li class="message">Нет данных для отображения</li>
+{{/if}}
