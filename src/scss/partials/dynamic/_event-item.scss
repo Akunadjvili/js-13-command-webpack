@@ -1,0 +1,177 @@
+@include for-size(mobile) {
+}
+@include for-size(tablet) {
+}
+@include for-size(desktop) {
+}
+
+.event-item {
+  position: relative;
+  @include for-size(mobile) {
+    width: 138px;
+    height: 242px;
+    padding-top: 9px;
+  }
+  @include for-size(tablet) {
+    width: 196px;
+    height: 312px;
+    padding-top: 13px;
+  }
+  @include for-size(desktop) {
+    width: 196px;
+    height: 312px;
+  }
+}
+.event-card__poster-container,
+.event-card__poster-container::before {
+  transition: all $trans-duration $trans-function;
+}
+.event-item:hover .event-card__poster-container {
+  box-shadow: 0px 6px 10px $card-border-color;
+}
+.event-item:hover .event-card__poster-container::before {
+  background-color: $card-border-color;
+  z-index: -1;
+}
+
+.event-item:hover .event-card__title,
+.event-item:hover .event-card__date,
+.event-item:hover .event-card__place-link {
+  // color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 8px 6px rgba(220, 86, 197, 0.8),
+    0px -5px 35px rgba(220, 86, 197, 0.3);
+}
+
+.event-card {
+  width: 100%;
+}
+.event-card__poster-link {
+  display: block;
+}
+.event-card__poster-container {
+  border-radius: 50px 0 50px 0;
+  overflow: hidden;
+  @include for-size(mobile) {
+    width: 128px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+  }
+}
+.event-card__poster-container::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0;
+
+  border-radius: 50px 0 50px 0;
+  border: 1px solid $card-border-color;
+  z-index: 1;
+  @include for-size(mobile) {
+    width: 109px;
+    height: 101px;
+  }
+  @include for-size(tablet) {
+    width: 153px;
+    height: 143px;
+  }
+}
+.event-card__poster-img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include for-size(mobile) {
+    width: 128px;
+    height: 161px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+    height: 227px;
+  }
+}
+.event-card__info {
+  padding: 5px;
+  @include for-size(mobile) {
+    width: 128px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+  }
+}
+.event-card__title-link {
+  @extend %link;
+}
+.event-card__title {
+  color: $text-accent-color;
+  font-family: $primary-font;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include for-size(mobile) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+  @include for-size(tablet) {
+    font-size: 16px;
+    line-height: (20px / 16px);
+  }
+}
+.event-card__date {
+  margin-top: 5px;
+  color: $white;
+  font-family: $primary-font;
+  font-weight: 400;
+  text-align: center;
+  @include for-size(mobile) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+  @include for-size(tablet) {
+    font-size: 16px;
+    line-height: (20px / 16px);
+  }
+}
+.event-card__place-link {
+  margin-top: 5px;
+  display: block;
+  // justify-content: center;
+  // align-items: center;
+  @extend %link;
+  color: $white;
+  font-family: $primary-font;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include for-size(mobile) {
+    font-size: 12px;
+    line-height: (15px / 12px);
+  }
+  @include for-size(tablet) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+}
+.event-card__place-link::before {
+  content: '';
+  display: inline-block;
+  margin-right: 3px;
+  background: url('@images/place.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include for-size(mobile) {
+    width: 6px;
+    height: 9px;
+  }
+  @include for-size(tablet) {
+    width: 7px;
+    height: 10px;
+  }
+}
