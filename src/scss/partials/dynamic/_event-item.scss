@@ -1,0 +1,204 @@
+@include for-size(mobile) {
+}
+@include for-size(tablet) {
+}
+@include for-size(desktop) {
+}
+
+.event-item {
+  position: relative;
+  @include for-size(mobile) {
+    width: 138px;
+    height: 242px;
+    padding-top: 9px;
+  }
+  @include for-size(tablet) {
+    width: 196px;
+    height: 312px;
+    padding-top: 13px;
+  }
+  @include for-size(desktop) {
+    width: 196px;
+    height: 312px;
+  }
+}
+.event-item:hover .event-card__poster-container::before {
+  // border: 1px solid red;
+  background-color: $card-border-color;
+}
+
+.card2 {
+  display: block;
+  top: 0px;
+  position: relative;
+  max-width: 262px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #f2f8f9;
+
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #00838d;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(2);
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(2.15);
+  }
+}
+
+.event-card {
+  width: 100%;
+}
+.event-card__poster-link {
+  display: block;
+}
+.event-card__poster-container {
+  border-radius: 50px 0 50px 0;
+  overflow: hidden;
+  @include for-size(mobile) {
+    width: 128px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+  }
+}
+.event-card__poster-container::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0;
+
+  border-radius: 50px 0 50px 0;
+  border: 1px solid $card-border-color;
+  z-index: 1;
+  @include for-size(mobile) {
+    width: 109px;
+    height: 101px;
+  }
+  @include for-size(tablet) {
+    width: 153px;
+    height: 143px;
+  }
+}
+.event-card__poster-img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @include for-size(mobile) {
+    width: 128px;
+    height: 161px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+    height: 227px;
+  }
+}
+.event-card__info {
+  padding: 5px;
+  @include for-size(mobile) {
+    width: 128px;
+  }
+  @include for-size(tablet) {
+    width: 180px;
+  }
+}
+.event-card__title-link {
+  @extend %link;
+}
+.event-card__title {
+  color: $text-accent-color;
+  font-family: $primary-font;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include for-size(mobile) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+  @include for-size(tablet) {
+    font-size: 16px;
+    line-height: (20px / 16px);
+  }
+}
+.event-card__date {
+  margin-top: 5px;
+  color: $white;
+  font-family: $primary-font;
+  font-weight: 400;
+  text-align: center;
+  @include for-size(mobile) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+  @include for-size(tablet) {
+    font-size: 16px;
+    line-height: (20px / 16px);
+  }
+}
+.event-card__place-link {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %link;
+  color: $white;
+  font-family: $primary-font;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include for-size(mobile) {
+    font-size: 12px;
+    line-height: (15px / 12px);
+  }
+  @include for-size(tablet) {
+    font-size: 14px;
+    line-height: (17px / 14px);
+  }
+}
+.event-card__place-link::before {
+  content: '';
+  display: block;
+  margin-right: 3px;
+  background: url('@images/place.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include for-size(mobile) {
+    width: 6px;
+    height: 9px;
+  }
+  @include for-size(tablet) {
+    width: 7px;
+    height: 10px;
+  }
+}
