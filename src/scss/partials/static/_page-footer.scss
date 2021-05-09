@@ -1,0 +1,23 @@
+.footer{
+    background-color: $main-background-overlay;
+
+   &-container{
+    text-align: center;
+    padding-bottom: 19px;
+
+    font-size: 14px;
+    line-height: 1.2;
+    color: $decoration-color;
+    
+      
+    @media screen and (min-width: $tablet){
+    display: flex;
+       
+    }
+}
+}
+
+.team-link{
+    @extend %link;
+    color: inherit;
+}
