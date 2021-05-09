@@ -1,9 +1,15 @@
+body {
+  background-color: black;
+}
 .pagination-container {
   @include for-size(mobile) {
-    padding: 20px 0 40px 0;
+    width: 280px;
   }
   @include for-size(tablet) {
-    padding: 60px 0 60px 0;
+    width: 610px;
+  }
+  @include for-size(desktop) {
+    width: 946px;
   }
 }
 
@@ -12,16 +18,16 @@
   grid-template-columns: 1fr;
   grid-gap: 10px;
   @include for-size(mobile) {
-    grid-template-columns: 280px;
-    grid-gap: 20px;
+    grid-template-columns: 138px 138px;
+    grid-gap: 30px 4px;
   }
   @include for-size(tablet) {
-    grid-template-columns: 294px 294px;
-    grid-gap: 30px;
+    grid-template-columns: 196px 196px 196px;
+    grid-gap: 45px 13px;
   }
   @include for-size(desktop) {
-    grid-template-columns: 274px 274px 274px;
-    grid-gap: 30px;
+    grid-template-columns: 196px 196px 196px 196px;
+    grid-gap: 50px 56px;
   }
 }
 
@@ -30,47 +36,50 @@
   align-items: center;
   justify-content: center;
   align-items: center;
-
-  @include for-size(tablet-only) {
-    margin-top: 40px;
-  }
-  @include for-size(tablet) {
+  @include for-size(mobile) {
     margin-top: 60px;
+  }
+  // @include for-size(tablet) {
+  //   margin-top: 60px;
+  // }
+  @include for-size(desktop) {
+    margin-top: 80px;
   }
 }
 
 .pgn__btn:not(:last-child),
 .pgn__btn--empty-start,
 .pgn__btn--empty-finish {
-  margin-right: 16px;
+  margin-right: 5px;
 }
 
 .pgn__btn {
-  border-radius: 5px;
+  width: 30px;
+  height: 30px;
   padding: 0;
-  background-color: #ffffff;
+  background-color: transparent;
   border: none;
-  color: #000000;
+  color: $white;
   cursor: pointer;
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.333;
-  outline: 0px solid #ff6b08;
+  font-family: $primary-font;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: (20px / 16px);
+  outline: 0px solid $text-accent-color;
+  border-radius: 10px 0 10px 0;
 }
 
-.pgn__btn--disable {
-  background-color: rgba(255, 0, 0, 0.26);
-  cursor: default;
-  pointer-events: none;
-}
+// .pgn__btn--disable {
+//   background-color: rgba(255, 0, 0, 0.26);
+//   cursor: default;
+//   pointer-events: none;
+// }
 
 .pgn__btn--active {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  background-color: #ff6b08;
-  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  color: $text-accent-color;
+  border: 1px solid $text-accent-color;
 }
 
 .pgn__btn--empty-start,
@@ -78,19 +87,19 @@
   cursor: default;
 }
 
-.pgn__btn--previous,
-.pgn__btn--next {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  background-color: #f7f7f7;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+// .pgn__btn--previous,
+// .pgn__btn--next {
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 5px;
+//   background-color: #f7f7f7;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
 
-.pgn__btn--previous {
-  //   background-image: url('@images/arrow-left.svg');
-}
-.pgn__btn--next {
-  //   background-image: url('@images/arrow-right.svg');
-}
+// .pgn__btn--previous {
+//     background-image: url('@images/arrow-left.svg');
+// }
+// .pgn__btn--next {
+//     background-image: url('@images/arrow-right.svg');
+// }
