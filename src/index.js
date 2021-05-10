@@ -3,3 +3,4 @@ import './scss/entry.scss';
 import '@scripts/index'
 
 
+import './js/team';
