@@ -1,14 +1,12 @@
 body {
   margin: 0;
-
   font: 500 10px/12px $white;
   text-transform: uppercase;
-
   color: $decoration-color;
-  background: $main-top-background-overlay;
+  // background: $main-top-background-overlay;
 
   @media screen and (min-width: $tablet) {
-    font: 500 12px/14px $white;
+    font: 500 12px/14px $primary-font;
   }
 }
 
@@ -42,26 +40,39 @@ a {
   min-height: 770px;
   position: relative;
   top: 10%;
-
+ $gradient: linear-gradient(to right, $header-background-overlay, $header-background-overlay);
   background: $main-top-background-overlay;
-  background-image: url('../images/pic.jpg');
+ 
   background-size: cover;
+   background-position: left;
   //  border: 6px solid #7922CC;
   border-radius: 250px 0px 250px 0px;
 
-  @media screen and (min-width: $tablet) {
+@media screen and (max-width: $tablet - 1){
+   background-image: $gradient, url('@images/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
-      background-image: url('../images/pic@2x.jpg');
+      background-image: $gradient, url('@images/pic@2x.jpg');
+    }
+  }
+
+
+  @media screen and (min-width: $tablet) {
+      background-image: $gradient, url('@images/tablet/pic.jpg');
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: $gradient, url('@images/tablet/pic@2x.jpg');
     }
   }
 
   @media screen and (min-width: $desktop) {
+      background-image: $gradient, url('@images/desktop/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
-      background-image: url('../images/pic@3x.jpg');
+      background-image: $gradient, url('@images/desktop/pic@2x.jpg');
     }
   }
 }
@@ -179,7 +190,7 @@ a {
 
   font-size: 12px;
 
-  border-radius: 5px;
+  border-radius: 25px;
   background: $card-border-color;
 
   @media screen and (min-width: $tablet) {
@@ -279,40 +290,42 @@ a {
   text-align: center;
 }
 
-.svg {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-}
+// .svg {
+//   position: absolute;
+//   left: 20px;
+//   top: 20px;
+//   background-color: white;
+// }
 
 .login-form .group.margin-bottom {
   margin-bottom: 60px;
 }
 
-.btn-authorization {
-  font: 500 12px/14px $primary-font;
-  font-size: 10px;
-  text-transform: uppercase;
-  // margin-right: 20px;
-  padding: 4px 8px;
-  margin: 10px;
-  display: inline-block;
-  // border-bottom: 3px solid transparent;
-  color: $text-accent-color;
-  // background-color: transparent;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 25px;
-  @media screen and (min-width: $tablet) {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
+// .btn-authorization {
+//   font: 500 12px/14px $primary-font;
+//   font-size: 10px;
+//   text-transform: uppercase;
+//   // margin-right: 20px;
+//   padding: 4px 8px;
+//   margin: 10px;
+//   display: inline-block;
+//   // border-bottom: 3px solid transparent;
+//   color: $text-accent-color;
+//   // background-color: transparent;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+//   border-radius: 25px;
+//   @media screen and (min-width: $tablet) {
+//     font-size: 18px;
+//     padding: 10px 20px;
+//   }
 
-  &:hover,
-  &:focus {
-    background-color: $text-accent-color;
-    color: $white;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     background-color: $text-accent-color;
+//     color: $white;
+//   }
+// }
+
 .modal-button {
   position: absolute;
   display: inline-flex;
