@@ -17,7 +17,7 @@ export default class RandomEventProvider extends Provider {
             //   const data=extdata;
             this.notify({
                 data: data._embedded.events,
-                totalDataSize: data.page.totalPages - 1,
+                totalDataSize: 400,//data.page.totalPages - 1,
                 pageDataSize: this.recordsForPage,
                 page
             });
