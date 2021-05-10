@@ -23,8 +23,8 @@ export async function eventsByIds(list) {
 }
 
 export async function eventSearchByPage(page, query, country, size = 20) {
-    const countryCode = country ? `&${country}` : '';
-    const queryLine = query ? `&${encodeURIComponent(query)}` : '';
+    const countryCode = country ? `&countryCode=${country}` : '';
+    const queryLine = query ? `&keyword=${encodeURIComponent(query)}` : '';
     progress.show();
     const data = await ticketmaster(`/size=${size}&page=${page}&source=universe${countryCode}${queryLine}`)
     progress.hide();
