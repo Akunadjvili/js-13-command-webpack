@@ -52,6 +52,14 @@
   width: 107px;
   height: 90px;
 
+  border-bottom-right-radius: 100%;
+  background: linear-gradient(
+    136.07deg,
+    rgba(196, 196, 196, 0.03) 10.75%,
+    rgba(196, 196, 196, 0) 92.33%
+  );
+  backdrop-filter: blur(30px);
+
   @include for-size(tablet) {
     width: 180px;
     height: 151px;
