@@ -34,22 +34,26 @@ a {
 
 .login-wrap {
   position: relative;
-  width: 100%;
+  width: 500px;
   margin: auto;
   max-width: 725px;
   min-height: 770px;
   position: relative;
   top: 10%;
- $gradient: linear-gradient(to right, $header-background-overlay, $header-background-overlay);
+  $gradient: linear-gradient(
+    to right,
+    $header-background-overlay,
+    $header-background-overlay
+  );
   background: $main-top-background-overlay;
- 
+
   background-size: cover;
-   background-position: left;
+  background-position: left;
   //  border: 6px solid #7922CC;
   border-radius: 250px 0px 250px 0px;
 
-@media screen and (max-width: $tablet - 1){
-   background-image: $gradient, url('@images/pic.jpg');
+  @media screen and (max-width: $tablet - 1) {
+    background-image: $gradient, url('@images/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
@@ -57,9 +61,8 @@ a {
     }
   }
 
-
   @media screen and (min-width: $tablet) {
-      background-image: $gradient, url('@images/tablet/pic.jpg');
+    background-image: $gradient, url('@images/tablet/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
@@ -68,7 +71,7 @@ a {
   }
 
   @media screen and (min-width: $desktop) {
-      background-image: $gradient, url('@images/desktop/pic.jpg');
+    background-image: $gradient, url('@images/desktop/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {

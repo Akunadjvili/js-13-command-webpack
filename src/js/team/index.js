@@ -1,27 +1,14 @@
-import InfoEventModalForm from '../components/InfoEventModalForm';
-import fetchTeam from './fetchTeam';
-import teamMarkUpTpl from '../../templates/dynamic/team.info.hbs';
+import teamMarkUpTpl from '@templates/dynamic/team.info.hbs';
+import TeamModalForm from '@components/TeamModalForm'
 
 const teamLinkRef = document.querySelector('.team-link');
-const teamData =  fetchTeam().then((data) => teamMarkUpTpl(data));
+teamLinkRef.addEventListener('click', openFormHandler);
 
-const teamModal = new InfoEventModalForm({
-    modal:'.js-modal',
-    template: teamData,
-})
-
-console.log(teamModal.refs.modal)
-
-teamLinkRef.addEventListener('click', onTeamModalOpen)
-
-function onTeamModalOpen(){
-  
-
-    // teamModal.refs.modal
-
-    
-    teamModal.get(modalRef);
-   
-
-
+async function openFormHandler(event) {
+    event.preventDefault();
+    const modal = new TeamModalForm({
+        modal: '.js-modal',
+        template: teamMarkUpTpl,
+    })
+    await modal.show.bind(modal)();
 }

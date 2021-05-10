@@ -1,8 +1,13 @@
-import authTemplate from '@templates/dynamic/user.signin.form.hbs';
+import authTemplate from '@templates/dynamic/user.sign.selector.hbs';
 import userTemplate from '@templates/dynamic/user.profile.hbs';
 
 import firebaseAPI from '@scripts/firebase/api.service';
 import storageAPI from '@scripts/storage/event.storage';
+
+
+import AuthorizationModalForm from '@scripts/components/AuthorizationModalForm.js';
+import signInTemplate from '@templates/dynamic/user.signin.form.hbs';
+
 
 class StandardFireBaseAuth {
   constructor({ placeholder, entry }) {
@@ -18,7 +23,8 @@ class StandardFireBaseAuth {
       signOutClickHandler: this.signOutClickHandler.bind(this),
       signInClickHandler: this.signInClickHandler.bind(this),
       signUpClickHandler: this.signUpClickHandler.bind(this),
-      googleInClickHandler: this.googleInClickHandler.bind(this)
+      googleInClickHandler: this.googleInClickHandler.bind(this),
+      signSelectHandler: this.openSignSelector.bind(this)
     }
   }
   // this.binds
@@ -44,6 +50,11 @@ class StandardFireBaseAuth {
         'click',
         this.binds.googleInClickHandler,
       );
+    if (this.refs.signSelect)
+      this.refs.signSelect.removeEventListener(
+        'click',
+        this.binds.signSelectHandler,
+      );
   }
 
   setEvents() {
@@ -67,6 +78,11 @@ class StandardFireBaseAuth {
         'click',
         this.binds.googleInClickHandler,
       );
+    if (this.refs.signSelect)
+      this.refs.signSelect.addEventListener(
+        'click',
+        this.binds.signSelectHandler,
+      );
   }
 
   renderUI() {
@@ -75,6 +91,7 @@ class StandardFireBaseAuth {
     this.refs.signUp = document.querySelector('[data-attr="signUp"]');
     this.refs.signOut = document.querySelector('[data-attr="signOut"]');
     this.refs.googleIn = document.querySelector('[data-attr="googleIn"]');
+    this.refs.signSelect = document.querySelector('[data-attr="signSelect"]');
     this.setEvents();
   }
 
@@ -94,17 +111,24 @@ class StandardFireBaseAuth {
       this.clearEvents();
       this.authContainer.innerHTML = authTemplate();
       this.renderUI();
-      // storageAPI.clear();
       this.entryPoint();
     }
   }
 
-  getSubmittedData() {
+  getSubmittedData(signIn) {
     const data = this.refs.signForm.elements;
-    return {
-      email: data.email.value,
-      password: data.password.value,
-    };
+    if (signIn) {
+      return {
+        email: data.emailIn.value,
+        password: data.passwordIn.value,
+      };
+    } else {
+      return {
+        email: data.emailUp.value,
+        password: data.passwordUp.value,
+      };
+    }
+
   }
 
   async signUpClickHandler(event) {
@@ -120,13 +144,21 @@ class StandardFireBaseAuth {
 
   async signInClickHandler(event) {
     event.preventDefault();
-    firebaseAPI.signIn(this.getSubmittedData());
+    firebaseAPI.signIn(this.getSubmittedData(true));
   }
 
   async googleInClickHandler(event) {
     event.preventDefault();
 
     firebaseAPI.signInGoogle();
+  }
+
+  openSignSelector() {
+    new AuthorizationModalForm({
+      modal: '.js-modal',
+      template: signInTemplate,
+    })
+    this.renderUI();
   }
 }
 

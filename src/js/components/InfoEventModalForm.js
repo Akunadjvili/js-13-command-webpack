@@ -5,11 +5,7 @@ import notify from '@components/notify.js';
 export default class InfoEventModalForm {
   constructor({ modal, template }) {
     this.template = template;
-    this.refs = this.#getReference(modal);
-    this.binds = this.setBinds();
-    [this.refs.close, this.refs.overlay].forEach(elm =>
-      elm.addEventListener('click', this.binds.hideEvent)
-    );
+    this.modal = modal;
   }
 
   setBinds() {
@@ -21,21 +17,27 @@ export default class InfoEventModalForm {
 
   #getReference(selector) {
     const modal = document.querySelector(selector);
-    // console.log(modal, "======");
-    const overlay = modal.querySelector('.modal__overlay');
-    const content = modal.querySelector('.modal__content');
-    const close = modal.querySelector('button[data-action="close-modal"]');
+    const overlay = document.querySelector('.modal__overlay');
+    const content = document.querySelector('.modal__content');
+    const close = document.querySelector('button[data-action="close-modal"]');
     return { modal, overlay, content, close };
   }
 
   async openEvent(event) {
     const targetEl = event.target;
-
     if (targetEl.dataset.attr) {
+
+      this.refs = this.#getReference(this.modal);
+      this.binds = this.setBinds();
+      [this.refs.close, this.refs.overlay].forEach(elm =>
+        elm.addEventListener('click', this.binds.hideEvent)
+      );
+
       const id = Number(targetEl.dataset.attr);
       const data = { ... await eventById(`${id}`), ...storage.event(id) }
       // console.log(data);
-      this.refs.modal.classList.add('is-open');
+      this.refs.overlay.classList.remove('is-hidden');
+      document.body.classList.toggle("modal-open")
       this.refs.content.innerHTML = this.template(data);
       this.addEvents();
       window.addEventListener('keydown', this.binds.keyEvent);
@@ -73,18 +75,28 @@ export default class InfoEventModalForm {
   }
 
 
-  hideEvent(event) {
-    event.preventDefault();
-    this.refs.modal.classList.remove('is-open');
+  #close() {
+    this.refs.overlay.classList.add('is-hidden');
     this.removeEvents();
     this.refs.content.innerHTML = ""
+    document.body.classList.toggle("modal-open")
     window.removeEventListener('keydown', this.binds.keyEvent);
+  }
+
+  hideEvent(event) {
+    if (event.target === event.currentTarget) {
+      console.log("===1");
+      event.preventDefault();
+      this.#close();
+    }
   }
 
   keyEvent(event) {
     switch (event.key) {
       case 'Escape':
-        this.hideEvent(event);
+        console.log("===2");
+        // this.hideEvent(event);
+        this.#close();
         break;
     }
   }
