@@ -20,7 +20,7 @@
     border-bottom-right-radius: 40%;
     margin-bottom: 20px;
 
-    &-link{
+    a{
         @extend %link;
         color: $main-background-overlay
         }

@@ -12,11 +12,16 @@ import InfoEventModalForm from '@scripts/components/InfoEventModalForm.js';
 import templateEventCard from '@templates/dynamic/event.info.modal.hbs';
 import templateEventsList from '@templates/dynamic/events.list.hbs';
 
+import StandardFireBaseAuth from '@scripts/components/StandardFireBaseAuth';
 
 const eventModal = new InfoEventModalForm({
     modal: '.js-modal',
     template: templateEventCard,
 });
+
+
+
+new StandardFireBaseAuth({ placeholder: '.header-auth', entry });
 
 
 function fabricPagination(provider, params) {
@@ -32,4 +37,7 @@ function fabricPagination(provider, params) {
     });
 }
 
-fabricPagination(RandomEventProvider);
+
+async function entry() {
+    fabricPagination(RandomEventProvider);
+}
