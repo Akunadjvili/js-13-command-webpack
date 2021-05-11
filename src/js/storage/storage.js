@@ -1,4 +1,4 @@
-import notify from '@components/notify.js';
+import notify from '@components/message.notify.js';
 class BrowserStorageApi {
   constructor({ storage = window.localStorage, storageKey = null } = {}) {
     this.storage = storage;

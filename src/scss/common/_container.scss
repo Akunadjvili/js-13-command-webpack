@@ -40,23 +40,29 @@ $desktop: 1280px;
   margin-left: auto;
   margin-right: auto;
   max-height: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  // padding-left: 15px;
+  // padding-right: 15px;
   max-width: 100%;
 
   @media screen and(min-width: $mobile) {
     width: $mobile;
-    padding-left: 25px;
-    padding-right: 25px;
+    // padding-left: 25px;
+    // padding-right: 25px;
+    // padding-left: 25px;
+    // padding-right: 15px;
   }
   @media screen and(min-width: $tablet) {
     width: $tablet;
-    padding-left: 85px;
-    padding-right: 85px;
+    // padding-left: 85px;
+    // padding-right: 85px;
+    // padding-left: 85px;
+    // padding-right: 73px;
   }
   @media screen and(min-width: $desktop) {
     width: $desktop;
-    padding-left: 175px;
-    padding-right: 175px;
+    // padding-left: 175px;
+    // padding-right: 175px;
+    // padding-left: 173px;
+    // padding-right: 161px;
   }
 }

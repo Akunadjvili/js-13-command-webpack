@@ -1,5 +1,5 @@
-import ticketmaster from "@scripts/ticketmaster/api.service"
-import { progress } from '@components/Progress';
+import ticketmaster from "@scripts/api/api.ticketmaster.service"
+import { progress } from '@components/spinner.progress';
 
 export async function eventById(id) {
     progress.show();

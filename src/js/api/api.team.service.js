@@ -1,4 +1,4 @@
-import { progress } from '@components/Progress';
+import { progress } from '@components/spinner.progress';
 const TEAM_URL = 'https://group-13-backend.herokuapp.com/api/team';
 
 export default async function fetchTeam() {
