@@ -1,6 +1,6 @@
-import { eventById } from "@scripts/ticketmaster/features"
+import { eventById } from "@scripts/api/api.ticketmaster.features"
 import storage from "@scripts/storage/event.storage"
-import notify from '@components/notify.js';
+import notify from '@components/message.notify.js';
 
 export default class InfoEventModalForm {
   constructor({ modal, template }) {

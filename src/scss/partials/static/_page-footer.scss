@@ -1,25 +1,22 @@
-.footer{
+.footer {
+  background-color: inherit;
+  text-transform: initial;
+  margin-top: 80px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 25px;
+  padding-right: 25px;
 
-    background-color: inherit;
-    text-transform: initial;
-    margin-top: 80px;
-        
-   &-container{
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 900px;
-
+  &-container {
     padding-bottom: 19px;
-
     font-size: 14px;
     line-height: 1.2;
     color: $decoration-color;
-    
-   }
-
+  }
 }
 
-.team-link{
-    @extend %link;
-    color: inherit;
+.team-link {
+  @extend %link;
+  color: inherit;
 }

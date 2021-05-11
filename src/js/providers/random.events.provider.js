@@ -1,6 +1,6 @@
 import Provider from './common/provider.js';
-import notify from '@components/notify.js';
-import { randomEventByPage } from "@scripts/ticketmaster/features"
+import notify from '@components/message.notify.js';
+import { randomEventByPage } from "@scripts/api/api.ticketmaster.features"
 
 export default class RandomEventProvider extends Provider {
     constructor({ recordsForPage = 20 } = {}) {

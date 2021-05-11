@@ -2,8 +2,8 @@
 const KEY_STORAGE_FIREBASE = 'firebase-storage';
 const KEY_STORAGE_LOCAL = 'storage';
 import BrowserEventStorage from './storage.js';
-import firebaseAPI from "@scripts/firebase/api.service"
-import notify from '@components/notify.js';
+import firebaseAPI from "@scripts/api/api.firebase.service"
+import notify from '@components/message.notify.js';
 
 const storage = new BrowserEventStorage({
   storageKey: KEY_STORAGE_FIREBASE,

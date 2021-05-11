@@ -1,18 +1,28 @@
-import notify from '@components/notify.js';
+import notify from '@components/message.notify.js';
+import fetchTeam from '@scripts/api/api.team.service';
 
 export default class AuthorizationModalForm {
     constructor({ modal, template }) {
         this.template = template;
-        this.refs = this.#getReference(modal);
-        this.binds = this.setBinds();
-        this.refs.overlay.classList.remove('is-hidden');
-        document.body.classList.add("modal-open")
-        this.refs.content.innerHTML = this.template();
-        this.addEvents();
-        window.addEventListener('keydown', this.binds.keyEvent);
-        [this.refs.close, this.refs.overlay].forEach(elm =>
-            elm.addEventListener('click', this.binds.hideEvent)
-        );
+        this.modal = modal;
+    }
+    async show() {
+        try {
+            const data = await fetchTeam();
+            this.refs = this.#getReference(this.modal);
+            this.binds = this.setBinds();
+            this.refs.overlay.classList.remove('is-hidden');
+            document.body.classList.add("modal-open")
+            this.refs.content.innerHTML = this.template(data);
+            this.addEvents();
+            window.addEventListener('keydown', this.binds.keyEvent);
+            [this.refs.close, this.refs.overlay].forEach(elm =>
+                elm.addEventListener('click', this.binds.hideEvent)
+            );
+        } catch (error) {
+            notify.showError(error);
+        }
+
     }
 
     setBinds() {
@@ -21,7 +31,6 @@ export default class AuthorizationModalForm {
             keyEvent: this.keyEvent.bind(this)
         }
     }
-
 
     #getReference(selector) {
         const modal = document.querySelector(selector);
@@ -38,7 +47,6 @@ export default class AuthorizationModalForm {
     removeEvents() {
 
     }
-
 
     #close() {
         this.refs.overlay.classList.add('is-hidden');
@@ -58,7 +66,6 @@ export default class AuthorizationModalForm {
     keyEvent(event) {
         switch (event.key) {
             case 'Escape':
-                event.preventDefault();
                 this.#close();
                 break;
         }

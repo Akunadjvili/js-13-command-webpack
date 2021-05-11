@@ -3,7 +3,9 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
 import 'firebase/messaging';
-import notify from '@components/notify.js';
+import notify from '@components/message.notify.js';
+import { progress } from '@components/spinner.progress';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXDpJivMtBIGq0eu-2TXFNYZMnriT-5X0',
@@ -17,41 +19,52 @@ firebase.initializeApp(firebaseConfig);
 
 async function signUp({ email, password }) {
   try {
+    progress.show();
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     const user = getUserProfile();
+    progress.hide();
     notify.showSuccess({
       code: 'Registration',
       message: `Registration was successful for ${user.email}`,
     });
+
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
 
 async function signOut() {
   try {
+    progress.show();
     const user = getUserProfile();
     await firebase.auth().signOut();
+    progress.hide();
     notify.showSuccess({
       code: 'Logout',
       message: `You've exited from ${user.email}`,
     });
+
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
 
 async function signIn({ email, password }) {
   try {
+    progress.show();
     const data = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
-
+    progress.hide();
     notify.showSuccess({
       code: 'Login',
       message: `You've entered as ${data.user.email}`,
     });
+
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
@@ -70,32 +83,43 @@ function spreadSnapshot(snapshot) {
 
 async function get(path) {
   try {
+    progress.show();
     const snapshot = await firebase.database().ref(path).once('value');
     const data = snapshot.val();
+    progress.hide();
     return data;
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
 
 async function set(path, value) {
   try {
+    progress.show();
     const snapshot = await firebase.database().ref(path).set(value);
+    progress.hide();
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
 
 async function getKey(path) {
   try {
-    return await firebase.database().ref(path).push().key;
+    progress.show();
+    const data = await firebase.database().ref(path).push().key;
+    progress.hide();
+    return data;
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
 
 async function getList(path) {
   try {
+    progress.show();
     const snapshots = await firebase.database().ref(path).once('value');
     const results = [];
     snapshots.forEach(snapshot => {
@@ -105,8 +129,10 @@ async function getList(path) {
         results.push({ [key]: data });
       }
     });
+    progress.hide();
     return results;
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
@@ -126,16 +152,20 @@ function getUserProfile() {
 
 async function signInGoogle() {
   try {
+    progress.show();
     const provider = new firebase.auth.GoogleAuthProvider();
     const data = await firebase
       .auth()
       .signInWithPopup(provider);
     console.log(data.user)
+    progress.hide();
     notify.showSuccess({
       code: 'Login',
       message: `You've entered as ${data.user.email}`,
     });
+
   } catch (error) {
+    progress.hide();
     notify.showError(error);
   }
 }
