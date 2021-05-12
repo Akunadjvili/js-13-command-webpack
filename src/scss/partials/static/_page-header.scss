@@ -2,6 +2,10 @@
   position: unset;
 }
 
+.is-hidden {
+  display: none;
+}
+
 .overlay {
   position: relative;
   max-width: 1280px;
@@ -112,12 +116,13 @@
 }
 
 .search-form {
-  position: relative;
   width: 270px;
-  height: 40px;
+  margin-bottom: 15px;
+
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 25px;
+
   &:last-child {
     margin-bottom: 0px;
   }
@@ -133,8 +138,8 @@
 }
 // ---------------------------------------------
 .search-field {
-  height: 100%;
-  width: 100%;
+  width: 270px;
+  height: 40px;
   padding-left: 30px;
   padding-right: 30px;
 
@@ -164,9 +169,6 @@
 }
 
 .choose-country {
-  width: 270px;
-  height: 40px;
-
   font-size: 15.5px;
 
   background-image: url('@images/header/polygon.svg');
@@ -243,6 +245,11 @@
     height: 20px;
     font-size: 10px;
   }
+
+  &:hover,
+  &:focus {
+    color: $text-accent-color;
+  }
 }
 
 .btn-sign-in {
@@ -257,4 +264,51 @@
   font-size: 16px;
   line-height: 1.25;
   color: $decoration-color;
+}
+
+// ---------------------------------------------
+// my event and tickets
+.personal-account-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+
+  & .search-field {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  @include for-size(tablet) {
+    padding-top: 30px;
+
+    & .search-field {
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+.personal-button {
+  width: 150px;
+
+  &:hover,
+  &:focus {
+    color: $text-accent-color;
+  }
+}
+
+.active-button {
+  color: $white;
+  background-color: $text-accent-color;
+
+  &:hover,
+  &:focus {
+    color: $decoration-color;
+  }
 }
