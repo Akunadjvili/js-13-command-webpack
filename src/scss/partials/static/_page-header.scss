@@ -185,28 +185,51 @@
   right: 20px;
 
   & > img {
+    width: 20px;
+    height: 20px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5px;
+  }
+
+  @include for-size(tablet) {
+    & > img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @include for-size(desktop) {
+    & > img {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 
 .reg-tittle {
-  font-size: 14px;
+  font-size: 10px;
   line-height: 1.2;
   color: $white;
-
   text-align: center;
-  margin-bottom: 5px;
+
+  @include for-size(tablet) {
+    margin-bottom: 5px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 14px;
+  }
 }
 
 .reg-button {
   font-family: $primary-font;
   font-style: normal;
   font-weight: 400;
-  height: 20px;
+  height: 15px;
   padding-left: 5px;
   padding-right: 5px;
-  font-size: 10px;
+  font-size: 8px;
   line-height: 1.25;
   color: $white;
   background-color: rgba(255, 255, 255, 0.2);
@@ -215,6 +238,11 @@
   border: transparent;
   outline: none;
   cursor: pointer;
+
+  @include for-size(tablet) {
+    height: 20px;
+    font-size: 10px;
+  }
 }
 
 .btn-sign-in {
