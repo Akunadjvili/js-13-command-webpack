@@ -1,6 +1,6 @@
 const ROUTER_URL = "https://group-13-backend.herokuapp.com/api/ticketmaster";
-import { progress } from '@components/Progress';
-import notify from '@components/notify.js';
+import { progress } from '@components/spinner.progress';
+import notify from '@components/message.notify.js';
 
 async function fetchData(url) {
     const options = {

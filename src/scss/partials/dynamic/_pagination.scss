@@ -2,6 +2,9 @@ body {
   background-color: black;
 }
 .pagination-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -60px;
   @include for-size(mobile) {
     width: 280px;
   }

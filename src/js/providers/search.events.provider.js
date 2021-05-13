@@ -16,7 +16,7 @@ export default class SearchEventProvider extends Provider {
       const data = await eventSearchByPage(`${page}`, query, country, size)
       this.notify({
         data: data._embedded.events,
-        totalDataSize: data.page.totalPages - 1,
+        totalDataSize: 400,//data.page.totalPages - 1,
         pageDataSize: this.recordsForPage,
         page
       });

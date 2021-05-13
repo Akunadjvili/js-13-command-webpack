@@ -1,0 +1,103 @@
+
+    <div class="" style="background-color: #FFF2FD">
+        <div class="event__image__small">
+            <img class="image modal__poster__small" src="{{images}}" alt="{{name}}" title="{{name}}" />
+        </div>
+        <div class="modal__event__information">
+            <div class="modal__image_poster">
+                <img class="image image__poster" src="{{images}}" alt="{{name}}" title="{{name}}" />
+            </div>
+            <div class="modal__event__details">
+
+                <ul>
+                    <li class="event__modal__item">
+                        <p class="modal__event__details__title">INFO</p>
+                        <p class="modal__event__info modal__event__info__text">
+                            {{name}} Atlas Weekend is the largest music festival
+                            in Ukraine.More than 200 artists will create
+                            a proper music festival atmosphere on 10 stages
+                        </p>
+                    </li>
+                    <li class="event__modal__item">
+                        <p class="modal__event__details__title ">WHEN</p>
+
+                        <p class="modal__event__info modal__event__info_where">{{localDate}}2021-06-09</p>
+                        <p class="modal__event__info">{{localTime}}20:00 (Kyiv/Ukraine){{timezone}}</p>
+                    </li>
+                    <li class="event__modal__item">
+                        <p class="modal__event__details__title">WHERE</p>
+                        <p class="modal__event__info modal__event__info_where">{{city}}Kyiv, Ukraine{{country}}</p>
+                        <p class="modal__event__info">{{address}}VDNH</p>
+                    </li>
+                    <li class="event__modal__item">
+                        <p class="modal__event__details__title">WHO</p>
+                        <p class="modal__event__info">The Black Eyed Peas
+                        </p>
+                    </li>
+                    <li class="event__modal__item">
+                        <p class="modal__event__details__title">PRICES</p>
+                        <div class="modal__barcode_standart_vip">
+                            <svg class="modal__barcode" viewBox="0 0 29 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M11.3266 0.833496L8.10439 0.833496L8.10439 20.1668H11.3266L11.3266 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M16.2088 0.833496L12.9866 0.833496L12.9866 20.1668H16.2088L16.2088 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M28.9999 0.833496L24.2154 0.833496L24.2154 20.1668H28.9999L28.9999 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M6.44449 0.833496L4.88219 0.833496L4.88219 20.1668H6.44449L6.44449 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M19.3333 0.833496L17.771 0.833496L17.771 20.1668H19.3333L19.3333 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M22.5555 0.833496L20.9932 0.833496L20.9932 20.1668H22.5555L22.5555 0.833496Z"
+                                    fill="#0E0E0E" />
+                            </svg>
+
+                            <p class="modal__event__info">Standart 300-500 UAH
+                            </p>
+                        </div>
+                        <button type="button" class=" modal__event__button btn__standart" data-id="{{id}}">BUY
+                            TICKETS</button>
+                        <div class="modal__barcode_standart_vip">
+                            <svg class="modal__barcode" viewBox="0 0 29 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M11.3266 0.833496L8.10439 0.833496L8.10439 20.1668H11.3266L11.3266 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M16.2088 0.833496L12.9866 0.833496L12.9866 20.1668H16.2088L16.2088 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M28.9999 0.833496L24.2154 0.833496L24.2154 20.1668H28.9999L28.9999 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M6.44449 0.833496L4.88219 0.833496L4.88219 20.1668H6.44449L6.44449 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M19.3333 0.833496L17.771 0.833496L17.771 20.1668H19.3333L19.3333 0.833496Z"
+                                    fill="#0E0E0E" />
+                                <path d="M22.5555 0.833496L20.9932 0.833496L20.9932 20.1668H22.5555L22.5555 0.833496Z"
+                                    fill="#0E0E0E" />
+                            </svg>
+                            <p class="modal__event__info">VIP 1000-1500 UAH</p>
+                        </div>
+                        <button type="button" class=" modal__event__button btn__vip" data-id="{{id}}">BUY
+                            TICKETS</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal__event__button__down">
+            <button type="button" class="modal__event__button__more" data-id="{{id}}">MORE FROM THIS AUTHOR</button>
+            <button type="button" class="modal__event__button__save" data-id="{{id}}">SAVE EVENT</button>
+        </div>
+        {{!-- <button type="button" class="modal__button modal__event_close " data-action="close-modal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                    fill="#4C00FE" />
+                <path d="M0 0h24v24H0z" fill="none">
+
+            </svg>
+        </button> --}}
+    </div>
+

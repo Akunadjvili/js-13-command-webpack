@@ -2,8 +2,8 @@
 const KEY_STORAGE_FIREBASE = 'firebase-storage';
 const KEY_STORAGE_LOCAL = 'storage';
 import BrowserEventStorage from './storage.js';
-import firebaseAPI from "@scripts/firebase/api.service"
-import notify from '@components/notify.js';
+import firebaseAPI from "@scripts/api/api.firebase.service"
+import notify from '@components/message.notify.js';
 
 const storage = new BrowserEventStorage({
   storageKey: KEY_STORAGE_FIREBASE,
@@ -72,7 +72,7 @@ async function load() {
   if (firebaseAPI.isAuth()) {
     try {
       const userId = firebaseAPI.getUserProfile().uid;
-      const path = `users/${userId}/cinema`;
+      const path = `users/${userId}/event`;
       const data = await firebaseAPI.getList(path);
       currentStorage().save(decode(data))
     } catch (error) {
@@ -114,22 +114,22 @@ async function store(list) {
       for (const { hash, id, booked, bought, state } of list) {
         switch (state) {
           case "add": {
-            let path = `users/${userId}/cinema/`;
+            let path = `users/${userId}/event/`;
             const hash = await firebaseAPI.getKey(path);
             refresh(+id, state, hash)
-            path = `users/${userId}/cinema/${hash}/`;
+            path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, { id, booked, bought });
             // console.log(`ADD==>${id}`);
             break;
           }
           case "change": {
-            const path = `users/${userId}/cinema/${hash}/`;
+            const path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, { id, booked, bought });
             // console.log(`CHANGE==>${id}`);
             break;
           }
           case "remove": {
-            const path = `users/${userId}/cinema/${hash}/`;
+            const path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, null);
             refresh(+id, state, hash)
             // console.log(`REMOVE==>${id}`);

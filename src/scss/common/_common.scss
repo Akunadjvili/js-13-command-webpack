@@ -20,13 +20,12 @@ button {
 body {
   font-family: $primary-font;
   margin: auto;
-  // min-width: 300px;
   overflow-x: hidden;
-  // height: 100vh;
+}
 
-  // width: 100vw;
-  //  height: 100vw;
-  // max-width: 100%;
+
+body.modal-open {
+  overflow: hidden;
 }
 
 img {
