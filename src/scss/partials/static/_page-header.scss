@@ -176,6 +176,13 @@
   background-position: right 30px top 50%, 0 0;
   background-size: width= '12px' height= '12px';
   appearance: none;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: $text-accent-color;
+    border: $text-accent-color;
+  }
 }
 
 // registration
