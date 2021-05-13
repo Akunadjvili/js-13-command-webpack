@@ -1,11 +1,12 @@
 
     <div class="event__modal__container" style="background-color: #FFF2FD">
+        {{name}}
         <div class="event__image__small">
-            <img class="image modal__poster__small" src="{{images}}" alt="{{name}}" title="{{name}}" />
+            <img class="image modal__poster__small" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
         </div>
         <div class="modal__event__information">
             <div class="modal__image_poster">
-                <img class="image image__poster" src="{{images}}" alt="{{name}}" title="{{name}}" />
+                <img class="image image__poster" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
             </div>
             <div class="modal__event__details">
 
@@ -21,17 +22,17 @@
                     <li class="event__modal__item">
                         <p class="modal__event__details__title ">WHEN</p>
 
-                        <p class="modal__event__info modal__event__info_where">{{localDate}}2021-06-09</p>
-                        <p class="modal__event__info">{{localTime}}20:00 (Kyiv/Ukraine){{timezone}}</p>
+                        <p class="modal__event__info modal__event__info_where">{{dates.start.localDate}}</p>
+                        <p class="modal__event__info">{{dates.start.localTime}} ({{dates.timezone}})</p>
                     </li>
                     <li class="event__modal__item">
                         <p class="modal__event__details__title">WHERE</p>
-                        <p class="modal__event__info modal__event__info_where">{{city}}Kyiv, Ukraine{{country}}</p>
-                        <p class="modal__event__info">{{address}}VDNH</p>
+                        <p class="modal__event__info modal__event__info_where">{{_embedded.venues.[0].city.name}}, {{_embedded.venues.[0].country.name}}</p>
+                        <p class="modal__event__info">{{_embedded.venues.[0].name}}</p>
                     </li>
                     <li class="event__modal__item">
                         <p class="modal__event__details__title">WHO</p>
-                        <p class="modal__event__info">The Black Eyed Peas
+                        <p class="modal__event__info">{{name}}
                         </p>
                     </li>
                     <li class="event__modal__item">
@@ -58,7 +59,7 @@
                             <p class="modal__event__info">Standart 300-500 UAH
                             </p>
                         </div>
-                        <button type="button" class=" modal__event__button btn__standart" data-id="{{id}}">BUY
+                        <button type="button" class=" modal__event__button btn__standart" data-id="{{id}}" data-action="cheap" data-controls>BUY
                             TICKETS</button>
                         <div class="modal__barcode_standart_vip">
                             <svg class="modal__barcode" viewBox="0 0 29 21" fill="none"
@@ -80,24 +81,31 @@
                             </svg>
                             <p class="modal__event__info">VIP 1000-1500 UAH</p>
                         </div>
-                        <button type="button" class=" modal__event__button btn__vip" data-id="{{id}}">BUY
+                        <button type="button" class=" modal__event__button btn__vip"  data-action="expensive" data-id="{{id}}" data-controls>BUY
                             TICKETS</button>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="modal__event__button__down">
-            <button type="button" class="modal__event__button__more" data-id="{{id}}">MORE FROM THIS AUTHOR</button>
-            <button type="button" class="modal__event__button__save" data-id="{{id}}">SAVE EVENT</button>
+            <button type="button" class="modal__event__button__more" data-id="{{name}}" data-find>MORE FROM THIS AUTHOR</button>
+            <button type="button" class="modal__event__button__save {{#if booked}}modal__event__button--active{{/if}}" data-id="{{id}}" data-action="booked" data-controls>{{#if booked}}
+            remove event
+            {{else}}
+            save event
+            {{/if}}</button>
         </div>
-        {{!-- <button type="button" class="modal__button modal__event_close " data-action="close-modal">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        
+                     
+
+        <button type="button" class="modal__button modal__event_close " data-action="close-modal-custom">
+            <svg style="pointer-events: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                     d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
                     fill="#4C00FE" />
                 <path d="M0 0h24v24H0z" fill="none">
 
             </svg>
-        </button> --}}
+        </button>
     </div>
 

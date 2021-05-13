@@ -11,7 +11,7 @@ export default class InfoEventModalForm {
   setBinds() {
     return {
       hideEvent: this.hideEvent.bind(this),
-      keyEvent: this.keyEvent.bind(this)
+      keyEvent: this.keyEvent.bind(this),
     }
   }
 
@@ -20,27 +20,29 @@ export default class InfoEventModalForm {
     const overlay = document.querySelector('.modal__overlay');
     const content = document.querySelector('.modal__content');
     const close = document.querySelector('button[data-action="close-modal"]');
+
     return { modal, overlay, content, close };
   }
 
   async openEvent(event) {
     const targetEl = event.target;
     if (targetEl.dataset.attr) {
-
       this.refs = this.#getReference(this.modal);
       this.binds = this.setBinds();
-      [this.refs.close, this.refs.overlay].forEach(elm =>
-        elm.addEventListener('click', this.binds.hideEvent)
-      );
-
-      const id = Number(targetEl.dataset.attr);
+      this.refs.close?.classList.add("visually-hidden");
+      this.refs.close?.addEventListener('click', this.binds.hideEvent)
+      this.refs.overlay?.addEventListener('click', this.binds.hideEvent)
+      const id = targetEl.dataset.attr;
       const data = { ... await eventById(`${id}`), ...storage.event(id) }
-      // console.log(data);
+
       this.refs.overlay.classList.remove('is-hidden');
-      document.body.classList.toggle("modal-open")
-      this.refs.content.innerHTML = this.template(data);
+      document.body.classList.add("modal-open")
+      this.refs.content.innerHTML = this.template({ ...data._embedded.events[0], ...storage.event(id) }); //._embedded.events[0]
+
       this.addEvents();
+
       window.addEventListener('keydown', this.binds.keyEvent);
+
       event.preventDefault();
     } else {
       if (targetEl.nodeName === "A") {
@@ -51,41 +53,60 @@ export default class InfoEventModalForm {
   }
 
   addEvents() {
-    this.refs.controls = document.querySelector('[data-controls]');
-    if (this.refs.controls) this.refs.controls.addEventListener('click', this.controlsHandler)
+    this.refs.controls = document.querySelectorAll('[data-controls]');
+    this.refs.find = document.querySelector('[data-find]');
+    this.refs.closeCustom = document.querySelector('button[data-action="close-modal-custom"]');
+    this.refs?.controls?.forEach(control => control?.addEventListener('click', this.controlsHandler))
+    this.refs?.find?.addEventListener('click', this.findMore)
   }
 
   removeEvents() {
-    if (this.refs.controls) this.refs.controls.removeEventListener('click', this.controlsHandler)
+    this.refs?.controls?.forEach(control => control?.removeEventListener('click', this.controlsHandler))
+    this.refs?.closeCustom?.removeEventListener('click', this.binds.hideEvent)
+    this.refs?.find?.removeEventListener('click', this.findMore)
+  }
+
+  findMore(event) {
+    console.log(event);
+    const targetEl = event.target;
+    const queryInput = document.querySelector('.js-search-input');
+    const searchForm = document.querySelector('.search-form');
+    queryInput.value = targetEl.dataset.id;
+    event.preventDefault();
+    searchForm.submit();
+    this.#close();
   }
 
   controlsHandler(event) {
+    // console.log(event.target);
     const targetEl = event.target;
     if (targetEl.dataset.action && targetEl.dataset.id) {
-      const [action, id] = [targetEl.dataset.action, Number(targetEl.dataset.id)];
+
+      const [action, id] = [targetEl.dataset.action, targetEl.dataset.id];
       const state = storage.event(id);
+      console.log("state", state);
       state[action] = !state[action]
       storage.update(id, state);
       if (state[action]) {
-        targetEl.classList.add("event__button--active");
+        targetEl.classList.add("modal__event__button--active");
       } else {
-        targetEl.classList.remove("event__button--active");
+        targetEl.classList.remove("modal__event__button--active");
       }
     }
   }
+
 
 
   #close() {
     this.refs.overlay.classList.add('is-hidden');
     this.removeEvents();
     this.refs.content.innerHTML = ""
-    document.body.classList.toggle("modal-open")
+    document.body.classList.remove("modal-open")
     window.removeEventListener('keydown', this.binds.keyEvent);
   }
 
   hideEvent(event) {
     if (event.target === event.currentTarget) {
-      console.log("===1");
       event.preventDefault();
       this.#close();
     }
@@ -94,8 +115,7 @@ export default class InfoEventModalForm {
   keyEvent(event) {
     switch (event.key) {
       case 'Escape':
-        console.log("===2");
-        // this.hideEvent(event);
+        this.hideEvent(event);
         this.#close();
         break;
     }

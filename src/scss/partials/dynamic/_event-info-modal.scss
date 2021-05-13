@@ -1,15 +1,6 @@
 .event__modal__container {
-  
-  width: 100%;
-  position: absolute;
-  position: absolute;
-  top: 201px;
-  left: 201;
-
-  transform: translate(-50%, -50%);
-  
+  position: relative;
   background-color: $modal-background-color;
-
 
   @media screen and(min-width: $mobile) {
     width: 272px;
@@ -91,6 +82,8 @@
 
 .modal__image_poster {
   display: none;
+  object-fit: contain;
+  object-position: contain;
 
   @media screen and(min-width: $tablet) {
     display: flex;
@@ -194,8 +187,7 @@
   }
 }
 
-.modal__barcode {  
-    
+.modal__barcode {
   margin-right: 13px;
   width: 24px;
   height: 16px;
@@ -231,7 +223,6 @@
 }
 
 .modal__event__button__down {
-  
   padding-right: 23px;
   padding-left: 25px;
 
@@ -258,12 +249,11 @@
   font-size: 16px;
   color: $button-accent-color;
   text-align: center;
-   line-height: 1.25;
+  line-height: 1.25;
   margin-bottom: 10px;
 
   @media screen and(min-width: $tablet) {
     width: 255px;
-    
   }
 
   @media screen and(min-width: $desktop) {
@@ -319,4 +309,8 @@
 .modal__event_close:hover,
 .modal__event_close:focus {
   background-color: #2e009a;
+}
+
+.modal__event__button--active {
+  background-color: #dc56c5;
 }

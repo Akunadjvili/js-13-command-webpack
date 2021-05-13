@@ -62,8 +62,8 @@ function decode(list) {
 }
 
 function encode(list) {
-  return list.reduce((pool, { hash, id, booked, bought }) => {
-    pool.push({ [hash]: { id, booked, bought } });
+  return list.reduce((pool, { hash, id, booked, expensive, cheap }) => {
+    pool.push({ [hash]: { id, booked, expensive, cheap } });
     return pool;
   }, []);
 }
@@ -111,28 +111,28 @@ async function store(list) {
   if (firebaseAPI.isAuth()) {
     try {
       const userId = firebaseAPI.getUserProfile().uid;
-      for (const { hash, id, booked, bought, state } of list) {
+      for (const { hash, id, booked, expensive, cheap, state } of list) {
         switch (state) {
           case "add": {
             let path = `users/${userId}/event/`;
             const hash = await firebaseAPI.getKey(path);
             refresh(+id, state, hash)
             path = `users/${userId}/event/${hash}/`;
-            await firebaseAPI.set(path, { id, booked, bought });
-            // console.log(`ADD==>${id}`);
+            await firebaseAPI.set(path, { id, booked, expensive, cheap });
+            console.log(`ADD==>${id}`);
             break;
           }
           case "change": {
             const path = `users/${userId}/event/${hash}/`;
-            await firebaseAPI.set(path, { id, booked, bought });
-            // console.log(`CHANGE==>${id}`);
+            await firebaseAPI.set(path, { id, booked, expensive, cheap });
+            console.log(`CHANGE==>${id}`);
             break;
           }
           case "remove": {
             const path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, null);
             refresh(+id, state, hash)
-            // console.log(`REMOVE==>${id}`);
+            console.log(`REMOVE==>${id}`);
             break;
           }
         }
@@ -148,7 +148,7 @@ async function store(list) {
 
 function bought() {
   const list = currentStorage().load() || [];
-  return list.filter(({ bought }) => bought)
+  return list.filter(({ expensive, cheap }) => expensive || cheap)
 }
 function booked() {
   const list = currentStorage().load() || [];
@@ -160,6 +160,7 @@ function clear() {
 }
 
 function event(id) {
+
   const list = currentStorage().load() || [];
   for (let cursor = 0; cursor < list.length; cursor++) {
     const { id: idc } = list[cursor];
@@ -168,10 +169,10 @@ function event(id) {
     }
   }
   // throw new Error("Wrong id")
-  return { booked: false, bought: false }
+  return { booked: false, expensive: false, cheap: false }
 }
 
-async function update(id, data = { booked: false, bought: false }) {
+async function update(id, data = { booked: false, expensive: false, cheap: false }) {
   const list = currentStorage().load() || [];
   old: {
     for (let cursor = 0; cursor < list.length; cursor++) {
@@ -182,7 +183,7 @@ async function update(id, data = { booked: false, bought: false }) {
         break old;
       }
     }
-    if (data.booked || data.bought) {
+    if (data.booked || data.cheap || data.expensive) {
       list.push({ hash: `Temporary ${id}`, id, ...data });
     }
   }
@@ -192,7 +193,8 @@ async function update(id, data = { booked: false, bought: false }) {
 
 function compare(currentMovie, previousMovie) {
   return currentMovie.booked !== previousMovie.booked ||
-    currentMovie.bought !== previousMovie.bought
+    currentMovie.cheap !== previousMovie.cheap ||
+    currentMovie.expensive !== previousMovie.expensive
     ? currentMovie
     : null;
 }
@@ -216,7 +218,7 @@ function findDifference(currentMovies, previousMovies) {
       const currentMovie = currentMovies.find(({ id }) => id === movieId);
       const previousMovie = previousMovies.find(({ id }) => id === movieId);
       const movie = compare(currentMovie, previousMovie);
-      if (movie && (movie.booked || movie.bought)) {
+      if (movie && (movie.booked || movie.cheap || movie.expensive)) {
         movie['state'] = 'change';
         result.push(movie);
       }
@@ -224,7 +226,7 @@ function findDifference(currentMovies, previousMovies) {
   }
   result.push(
     ...currentMovies
-      .filter(({ booked, bought }) => !booked && !bought)
+      .filter(({ booked, expensive, cheap }) => !booked && !cheap && !expensive)
       .map(movie => {
         movie['state'] = 'remove'; return movie;
       }),
@@ -234,6 +236,7 @@ function findDifference(currentMovies, previousMovies) {
 }
 
 async function storageChangeHandler(data) {
+
   const Type = {
     upload: 'upload',
     remove: 'remove',
@@ -245,7 +248,7 @@ async function storageChangeHandler(data) {
         switch (message) {
           case Type.upload: {
             if (dataOld !== undefined) {
-              // console.log(`Updated ${KEY_STORAGE_FIREBASE}:${message}`);
+              console.log(`Updated ${KEY_STORAGE_FIREBASE}:${message}`);
               const changes = findDifference(
                 JSON.parse(dataNew), JSON.parse(dataOld),
               );

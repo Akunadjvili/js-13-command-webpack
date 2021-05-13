@@ -14,10 +14,9 @@ export default class RandomEventProvider extends Provider {
     async getData(page) {
         try {
             const data = await randomEventByPage(`${page}`, this.recordsForPage)
-            //   const data=extdata;
             this.notify({
                 data: data._embedded.events,
-                totalDataSize: 400,//data.page.totalPages - 1,
+                totalDataSize: Math.min(data.page.totalPages - 1, 400),//data.page.totalPages - 1,
                 pageDataSize: this.recordsForPage,
                 page
             });

@@ -440,3 +440,25 @@ input::placeholder {
 .is-hidden {
   display: none;
 }
+
+.modal__auth_close {
+  width: 17px;
+  height: 17px;
+  top: 25px;
+  right: 25px;
+
+  @media screen and(min-width: $desktop) {
+    width: 25px;
+    height: 25px;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+.modal__auth_close:hover,
+.modal__auth_close:focus {
+  color: #939393;
+  background-color: #dc56c5;
+  box-shadow: 2px 8px 6px rgba(220, 86, 197, 0.8),
+    0px -5px 35px rgba(220, 86, 197, 0.3);
+}
