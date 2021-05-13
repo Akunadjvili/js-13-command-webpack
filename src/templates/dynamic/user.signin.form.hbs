@@ -12,16 +12,16 @@
       <div class='sign-in-htm'>
         <div class='group'>
           <label for='user' class='label'>Email Address</label>
-        {{!-- <input class="input" type="email" name="mail" placeholder="Akunadjvili2@gmail.com" required> --}}
+          {{! <input class="input" type="email" name="mail" placeholder="Akunadjvili2@gmail.com" required> }}
           <input
             id='user'
             type='email'
-            class='input'
+            class='input margin-bottom'
             name='emailIn'
             value='Akunadjvili2@gmail.com'
           />
         </div>
-        <div class='group margin-bottom'>
+        <div class='group'>
           <label for='pass' class='label'>Password</label>
           <input
             id='pass'
@@ -29,26 +29,24 @@
             class='input'
             data-type='password'
             name='passwordIn'
-            {{!-- placeholder='. . . . . . . . . . ' --}}
             value='1er65fgwer68f46wer'
+            {{! placeholder='. . . . . . . . . . ' }}
           />
         </div>
-        <div class='group'>
-          <input
-            type='submit'
-            class='button'
-            value='Sign In'
-            data-attr='signIn'
-          />
+
+        <div class='flex'>
+          <input type='submit' class='btn' value='Sign In' data-attr='signIn' />
+          <button class='btn' data-attr='btn-google'>Google</button>
         </div>
+
       </div>
       <div class='sign-up-htm'>
-        <div class='group margin-bottom'>
+        <div class='group'>
           <label for='email' class='label'>Email Address</label>
           <input
             id='email'
             type='email'
-            class='input'
+            class='input margin-bottom'
             name='emailUp'
             value='Akunadjvili2@gmail.com'
           />
@@ -64,14 +62,11 @@
             value='1er65fgwer68f46wer'
           />
         </div>
-        <div class='group'>
-          <input
-            type='submit'
-            class='button'
-            value='Sign Up'
-            data-attr='signUp'
-          />
+        <div class='flex'>
+          <input type='submit' class='btn' value='Sign Up' data-attr='signUp' />
+          <button class='btn' data-attr='btn-google'>Google</button>
         </div>
+
       </div>
     </div>
   </div>
