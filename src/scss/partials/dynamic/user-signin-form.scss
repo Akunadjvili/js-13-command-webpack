@@ -180,10 +180,9 @@ a {
   }
 }
 
-.login-form .input{
+.login-form .input {
   position: relative;
 }
-
 
 .login-form .group:not(:last-child) {
   margin-bottom: 20px;
@@ -192,7 +191,6 @@ a {
 .login-form .group .label,
 .login-form .group .input,
 .login-form .group .button {
- 
   min-width: 200px;
   width: 90%;
   color: $white;
@@ -235,12 +233,13 @@ a {
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
+    margin-bottom: 20px;
   }
 }
 
 input::placeholder {
-color: $white;
-// text-align: center;
+  color: $white;
+  // text-align: center;
 }
 
 .login-form .group .button {
@@ -318,12 +317,76 @@ color: $white;
   text-align: center;
 }
 
-.login-form .group.margin-bottom {
-  margin-bottom: 40px;
+.margin-bottom {
+  margin-bottom: 10px;
 
   @media screen and (min-width: $tablet) {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
+}
+
+.btn {
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 400;
+  height: 28px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 10px;
+  line-height: 1.25;
+  color: $text-accent-color;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50px 0px 50px 0px;
+  // border-radius: 20px;
+  border: transparent;
+  outline: none;
+  cursor: pointer;
+
+  @media screen and (min-width: $tablet) {
+    height: 44px;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    font-size: 14px;
+    line-height: 1.25;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 44px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+    font-size: 16px;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 60px;
+  }
+}
+.btn:not(:last-child) {
+  margin-right: 15px;
+  @media screen and (min-width: $tablet) {
+    margin-right: 40px;
+  }
+}
+.btn:hover,
+.btn:focus {
+  box-shadow: $decoration-color;
+  background-color: $text-accent-color;
+  color: black;
+  cursor: pointer;
+  box-shadow: 2px 8px 6px rgba(220, 86, 197, 0.8),
+    0px -5px 35px rgba(220, 86, 197, 0.3);
 }
 
 .modal-button {
@@ -376,4 +439,26 @@ color: $white;
 }
 .is-hidden {
   display: none;
+}
+
+.modal__auth_close {
+  width: 17px;
+  height: 17px;
+  top: 25px;
+  right: 25px;
+
+  @media screen and(min-width: $desktop) {
+    width: 25px;
+    height: 25px;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+.modal__auth_close:hover,
+.modal__auth_close:focus {
+  color: #939393;
+  background-color: #dc56c5;
+  box-shadow: 2px 8px 6px rgba(220, 86, 197, 0.8),
+    0px -5px 35px rgba(220, 86, 197, 0.3);
 }

@@ -3,7 +3,7 @@ import { progress } from '@components/spinner.progress';
 
 export async function eventById(id) {
     progress.show();
-    const data = await ticketmaster(`/id=${id}&source=universe`)
+    const data = await ticketmaster(`/id=${id}`)
     progress.hide();
     return data;
 }
@@ -17,7 +17,7 @@ export async function randomEventByPage(page, size = 20) {
 
 export async function eventsByIds(list) {
     progress.show();
-    const data = await Promise.all(list.map(id => ticketmaster(`/id=${id}&source=universe`)))
+    const data = await Promise.all(list.map(id => ticketmaster(`/id=${id}`)))
     progress.hide();
     return data
 }
@@ -26,7 +26,8 @@ export async function eventSearchByPage(page, query, country, size = 20) {
     const countryCode = country ? `&countryCode=${country}` : '';
     const queryLine = query ? `&keyword=${encodeURIComponent(query)}` : '';
     progress.show();
-    const data = await ticketmaster(`/size=${size}&page=${page}&source=universe${countryCode}${queryLine}`)
+    //&source=universe
+    const data = await ticketmaster(`/size=${size}&page=${page}${countryCode}${queryLine}`)
     progress.hide();
     return data
 }

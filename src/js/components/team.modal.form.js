@@ -41,7 +41,7 @@ export default class AuthorizationModalForm {
     }
 
     addEvents() {
-
+        this.refs.close?.classList.remove("visually-hidden");
     }
 
     removeEvents() {

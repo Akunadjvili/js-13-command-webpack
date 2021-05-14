@@ -24,6 +24,7 @@ export default class AuthorizationModalForm {
             signInClickHandler: this.signInClickHandler.bind(this),
             signUpClickHandler: this.signUpClickHandler.bind(this),
             googleInClickHandler: this.googleInClickHandler.bind(this),
+            googleUpClickHandler: this.googleInClickHandler.bind(this),
         }
     }
 
@@ -37,19 +38,29 @@ export default class AuthorizationModalForm {
     }
 
     addEvents() {
+        this.refs.close?.classList.add("visually-hidden");
         this.refs.signForm = document.querySelector('[data-attr="signForm"]');
         this.refs.signIn = document.querySelector('[data-attr="signIn"]');
         this.refs.signUp = document.querySelector('[data-attr="signUp"]');
         this.refs.googleIn = document.querySelector('[data-attr="googleIn"]');
+        this.refs.googleUp = document.querySelector('[data-attr="googleUp"]');
+        this.refs.closeCustom = document.querySelector('button[data-action="close-modal-custom"]');
+        this.refs?.closeCustom?.addEventListener('click', this.binds.hideEvent)
+
+
         this.refs.signIn.addEventListener('click', this.binds.signInClickHandler);
         this.refs.signUp.addEventListener('click', this.binds.signUpClickHandler);
-        // this.refs.googleIn.addEventListener('click', this.binds.googleInClickHandler);
+        this.refs.googleIn.addEventListener('click', this.binds.googleInClickHandler);
+        this.refs.googleUp.addEventListener('click', this.binds.googleUpClickHandler);
+
     }
 
     removeEvents() {
         this.refs.signIn.removeEventListener('click', this.binds.signInClickHandler);
         this.refs.signUp.removeEventListener('click', this.binds.signUpClickHandler);
-        // this.refs.googleIn.removeEventListener('click', this.binds.googleInClickHandler);
+        this.refs.googleIn.removeEventListener('click', this.binds.googleInClickHandler);
+        this.refs.googleUp.removeEventListener('click', this.binds.googleUpClickHandler);
+        this.refs?.closeCustom?.addEventListener('click', this.binds.hideEvent)
     }
 
     getSubmittedData(signIn) {
