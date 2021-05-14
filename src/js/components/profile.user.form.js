@@ -4,7 +4,7 @@ import storageAPI from '@scripts/storage/event.storage';
 
 // import signInTemplate from '@templates/dynamic/user.signin.form.hbs';
 // import AuthorizationModalForm from '@components/authorization.modal.form.js';
-
+import LibraryContainer from '@components/library.placeholder.form.js'
 export default class SelectSignForm {
     constructor({ place, template }) {
         this.template = template;
@@ -12,6 +12,7 @@ export default class SelectSignForm {
         this.binds = this.setBinds();
         this.refs.content.innerHTML = this.template();
         this.addEvents();
+        this.library = new LibraryContainer();
     }
 
     setBinds() {
@@ -33,6 +34,7 @@ export default class SelectSignForm {
     removeEvents() {
         this.refs.signOut.removeEventListener('click', this.binds.signOutClickHandler);
         this.refs.content.innerHTML = ""
+        this.library?.removeEvents()
     }
 
     async signOutClickHandler(event) {

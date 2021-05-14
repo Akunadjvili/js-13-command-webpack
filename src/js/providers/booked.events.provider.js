@@ -1,6 +1,6 @@
 import Provider from './common/provider.js';
-import notify from '@components/notify.js';
-import { eventsByIds } from "@scripts/ticketmaster/features"
+import notify from '@components/message.notify.js';
+import { eventsByIds } from "@scripts/api/api.ticketmaster.features"
 import storage from "@scripts/storage/event.storage"
 
 export default class BookedEventProvider extends Provider {
@@ -26,8 +26,12 @@ export default class BookedEventProvider extends Provider {
         (page - 1) * this.getPageDataSize() + this.getPageDataSize(),
       ];
       const data = await eventsByIds(ids.slice(...interval))
+      const events = data.reduce((acc, value) => {
+        acc.push(value._embedded.events[0])
+        return acc
+      }, [])
       this.notify({
-        data: data,
+        data: events,
         totalDataSize: this.getDataTotalSize(),
         pageDataSize: this.getPageDataSize(),
         page,

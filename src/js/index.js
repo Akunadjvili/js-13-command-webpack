@@ -11,6 +11,8 @@ import TeamModalForm from '@components/team.modal.form'
 import PaginationBar from '@components/pagination.bar';
 import PaginationPlaceholder from '@components/pagination.placeholder.js';
 import RandomEventProvider from '@providers/random.events.provider.js';
+import SearchEventProvider from '@providers/search.events.provider.js';
+
 import InfoEventModalForm from '@scripts/components/info.event.modal.form.js';
 import StandardFireBaseAuth from '@scripts/components/firebase.auth';
 
@@ -37,7 +39,7 @@ const eventModal = new InfoEventModalForm({
 
 new StandardFireBaseAuth({ placeholder: '.header-auth', entry });
 
-function fabricPagination(provider, params) {
+function fabricPagination(provider, action, params,) {
     new PaginationBar({
         container: '.pagination-container',
         viewProvider: new PaginationPlaceholder({
@@ -45,19 +47,29 @@ function fabricPagination(provider, params) {
             template: templateEventsList,
         }),
         dataProvider: new provider(),
-        action: eventModal.openEvent.bind(eventModal),
+        action,
         params,
     });
 }
 
-
 async function entry() {
-    fabricPagination(RandomEventProvider);
+    fabricPagination(RandomEventProvider, eventModal.openEvent.bind(eventModal));
 }
 
 
-
+const queryInput = document.querySelector('.js-search-input');
 const searchForm = document.querySelector('.search-form');
-searchForm.addEventListener('submit', (event) => {
-    console.log();
-});
+const countrySelect = document.querySelector('.js-country-select');
+
+const find = function (event) {
+    event.preventDefault();
+    const data = {
+        query: queryInput.value,
+        country: countrySelect.value
+    }
+
+    fabricPagination(SearchEventProvider, eventModal.openEvent.bind(eventModal), data);
+}
+
+searchForm.addEventListener('submit', find);
+countrySelect.addEventListener('change', find);

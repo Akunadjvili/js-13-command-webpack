@@ -9,8 +9,8 @@
 
         <div class="event-card__info">
             <a href="#" class="event-card__title-link" title="{{name}}" data-attr="{{id}}">
-                <h2 class="event-card__title">{{name}}</h2>
-                <p class="event-card__date">{{dates.start.localDate}}</p>
+                <h2 class="event-card__title" data-attr="{{id}}">{{name}}</h2>
+                <p class="event-card__date" data-attr="{{id}}">{{dates.start.localDate}}</p>
             </a>
 
             <a href="{{_embedded.venues.[0].url}}" class="event-card__place-link" target="_blank"
