@@ -1,6 +1,6 @@
 
     <div class="event__modal__container" style="background-color: #FFF2FD">
-        {{name}}
+      
         <div class="event__image__small">
             <img class="image modal__poster__small" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
         </div>
@@ -32,7 +32,7 @@
                     </li>
                     <li class="event__modal__item">
                         <p class="modal__event__details__title">WHO</p>
-                        <p class="modal__event__info">{{name}}
+                        <p class="modal__event__info modal__event__info_who">{{name}}
                         </p>
                     </li>
                     <li class="event__modal__item">
@@ -59,8 +59,10 @@
                             <p class="modal__event__info">Standart 300-500 UAH
                             </p>
                         </div>
+                        <div class="modal__event__button__box">
                         <button type="button" class=" modal__event__button btn__standart" data-id="{{id}}" data-action="cheap" data-controls>BUY
                             TICKETS</button>
+                            </div>
                         <div class="modal__barcode_standart_vip">
                             <svg class="modal__barcode" viewBox="0 0 29 21" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -81,8 +83,10 @@
                             </svg>
                             <p class="modal__event__info">VIP 1000-1500 UAH</p>
                         </div>
+                        <div class="modal__event__button__box">
                         <button type="button" class=" modal__event__button btn__vip"  data-action="expensive" data-id="{{id}}" data-controls>BUY
                             TICKETS</button>
+                            </div>
                     </li>
                 </ul>
             </div>
