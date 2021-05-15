@@ -100,10 +100,10 @@
 }
 
 .modal__event__details {
-  max-width: 243px;
+  min-width: 243px;
 
   @media screen and(min-width: $tablet) {
-    width: 295px;
+    max-width: 295px;
     padding-left: 30px;
   }
 
