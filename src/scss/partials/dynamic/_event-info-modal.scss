@@ -6,9 +6,17 @@
   margin-right: auto;
   @media screen and(min-width: $mobile) {
     border-radius: 150px 0px;
+    max-height: 915px;
+    max-width: 272px;
   }
   @media screen and(min-width: $tablet) {
     border-radius: 300px 0px;
+    max-height: 831px;
+    max-width: 595px;
+  }
+  @media screen and(min-width: $desktop) {
+    max-height: 1023px;
+    max-width: 930px;
   }
 }
 
@@ -100,15 +108,15 @@
 }
 
 .modal__event__details {
-  min-width: 243px;
+  
 
   @media screen and(min-width: $tablet) {
-    max-width: 295px;
+    
     padding-left: 30px;
   }
 
   @media screen and(min-width: $desktop) {
-    min-width: 510px;
+   
     padding-left: 60px;
   }
 }
@@ -134,11 +142,13 @@
 
 .modal__event__info__text {
   max-height: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+ white-space:normal;
 
   @media screen and(min-width: $desktop) {
     max-height: 66px;
+     overflow: hidden;
+  text-overflow: ellipsis;
+  
   }
 }
 
@@ -163,19 +173,23 @@
 
 .modal__event__info_where {
   margin-bottom: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space:normal;
 
   @media screen and(min-width: $desktop) {
     margin-bottom: 5px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
 }
 
 .modal__event__info_who {
-  white-space: nowrap;
+  white-space:normal;
+   @media screen and(min-width: $desktop) {
+     white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+   }
 }
 
 .modal__barcode_standart_vip {
@@ -322,12 +336,12 @@
   top: 25px;
   right: 25px;
 
-  // @media screen and(min-width: $desktop) {
-  //   width: 25px;
-  //   height: 25px;
-  //   top: 30px;
-  //   right: 30px;
-  // }
+  @media screen and(min-width: $desktop) {
+    width: 25px;
+    height: 25px;
+    top: 30px;
+    right: 30px;
+  }
 }
 
 .modal__event_close:hover,
