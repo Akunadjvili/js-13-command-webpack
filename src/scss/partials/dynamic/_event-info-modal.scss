@@ -1,58 +1,54 @@
 .event__modal__container {
   position: relative;
   background-color: $modal-background-color;
-
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and(min-width: $mobile) {
-    width: 272px;
-    height: 915px;
     border-radius: 150px 0px;
+    max-height: 915px;
+    max-width: 272px;
   }
   @media screen and(min-width: $tablet) {
-    width: 595px;
-    height: 831px;
     border-radius: 300px 0px;
+    max-height: 831px;
+    max-width: 595px;
   }
-
   @media screen and(min-width: $desktop) {
-    width: 930px;
-    height: 1023px;
+    max-height: 1023px;
+    max-width: 930px;
   }
 }
 
 .event__image__small {
-  height: 177px;
+  width: 102px;
   padding-top: 75px;
-  padding-left: 86px;
-  padding-right: 84px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and(min-width: $tablet) {
-    height: 98px;
+    width: 70px;
     padding-top: 28px;
-    padding-left: 263px;
-    padding-right: 262px;
   }
   @media screen and(min-width: $desktop) {
-    height: 194px;
+    width: 132px;
     padding-top: 62px;
-    padding-left: 399px;
-    padding-right: 399px;
   }
 }
 
 .modal__poster__small {
   border-radius: 100px;
-  border: 1px solid $button-accent-color;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
   @media screen and(min-width: $mobile) {
-    width: 102px;
     height: 102px;
   }
 
   @media screen and(min-width: $tablet) {
-    width: 70px;
     height: 70px;
   }
   @media screen and(min-width: $desktop) {
-    width: 132px;
     height: 132px;
   }
 }
@@ -60,8 +56,6 @@
 .modal__event__information {
   display: flex;
   margin: auto;
-
-  //   height: 696px;
   padding-left: 12px;
   padding-right: 17px;
   padding-top: 18px;
@@ -69,10 +63,9 @@
   @media screen and(min-width: $tablet) {
     padding-left: 50px;
     padding-top: 43px;
-    padding-bottom: 43px;
+    padding-bottom: 20px;
   }
   @media screen and(min-width: $desktop) {
-    height: 727px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 41px;
@@ -82,18 +75,17 @@
 
 .modal__image_poster {
   display: none;
-  object-fit: contain;
-  object-position: contain;
 
   @media screen and(min-width: $tablet) {
-    display: flex;
-    width: 263px;
+    display: block;
+    // min-width: 233px;
+    // max-height: 416px;
   }
 
-  @media screen and(min-width: $desktop) {
-    width: 420px;
-    height: 641px;
-  }
+  // @media screen and(min-width: $desktop) {
+  //   width: 3600px;
+  //   height: 641px;
+  // }
 }
 
 .image__poster {
@@ -101,9 +93,12 @@
 
   @media screen and(min-width: $tablet) {
     display: block;
+    object-fit: fill;
+    max-width: 100%;
+    height: 100%;
+    object-position: center;
     width: 233px;
     height: 416px;
-    border: 1px solid $button-accent-color;
   }
 
   @media screen and(min-width: $desktop) {
@@ -113,15 +108,16 @@
 }
 
 .modal__event__details {
-  width: 243px;
+  
 
   @media screen and(min-width: $tablet) {
-    width: 265px;
+    
+    padding-left: 30px;
   }
 
   @media screen and(min-width: $desktop) {
-    width: 450px;
-    height: 641px;
+   
+    padding-left: 60px;
   }
 }
 
@@ -145,10 +141,14 @@
 }
 
 .modal__event__info__text {
-  height: 100px;
+  max-height: 100px;
+ white-space:normal;
 
   @media screen and(min-width: $desktop) {
-    height: 66px;
+    max-height: 66px;
+     overflow: hidden;
+  text-overflow: ellipsis;
+  
   }
 }
 
@@ -173,11 +173,25 @@
 
 .modal__event__info_where {
   margin-bottom: 3px;
+  white-space:normal;
 
   @media screen and(min-width: $desktop) {
     margin-bottom: 5px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
 }
+
+.modal__event__info_who {
+  white-space:normal;
+   @media screen and(min-width: $desktop) {
+     white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+   }
+}
+
 .modal__barcode_standart_vip {
   display: flex;
   justify-content: center;
@@ -193,17 +207,29 @@
   height: 16px;
 }
 
+.modal__event__button__box {
+  display: flex;
+  justify-content: center;
+
+  @media screen and(min-width: $tablet) {
+    justify-content: start;
+  }
+}
+
 .modal__event__button {
-  width: 145px;
-  height: 40px;
   font-weight: 500;
   font-size: 16px;
   background-color: $button-accent-color;
   color: #ffffff;
   border-radius: 5px;
   line-height: 1.25;
-  margin-left: 52px;
-  margin-right: 46px;
+
+  padding-top: 9px;
+  padding-bottom: 10px;
+  padding-right: 19px;
+  padding-left: 19px;
+  align-items: center;
+  text-align: center;
 
   @media screen and(min-width: $tablet) {
     margin: 0;
@@ -223,19 +249,26 @@
 }
 
 .modal__event__button__down {
-  padding-right: 23px;
-  padding-left: 25px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+  white-space: nowrap;
+  padding-bottom: 54px;
 
   @media screen and(min-width: $tablet) {
-    padding-right: 170px;
-    padding-left: 170px;
+    padding-bottom: 9px;
   }
 
   @media screen and(min-width: $desktop) {
-    display: flex;
+    flex-flow: row;
     justify-content: space-between;
-    padding-right: 227px;
+    padding-right: 345px;
     padding-left: 70px;
+    padding-bottom: 62px;
   }
 }
 
@@ -250,10 +283,18 @@
   color: $button-accent-color;
   text-align: center;
   line-height: 1.25;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 9px;
+  padding-bottom: 9px;
   margin-bottom: 10px;
 
   @media screen and(min-width: $tablet) {
     width: 255px;
+    padding-left: 16px;
+    padding-right: 15px;
+
+    margin-bottom: 10px;
   }
 
   @media screen and(min-width: $desktop) {
@@ -262,7 +303,7 @@
 }
 
 .modal__event__button__save {
-  width: 200px;
+  width: 138px;
   height: 40px;
   background-color: $modal-background-color;
   border: 1px solid $button-accent-color;
@@ -272,14 +313,11 @@
   color: $button-accent-color;
   text-align: center;
   line-height: 1.25;
-
-  @media screen and(min-width: $tablet) {
-    width: 170px;
-  }
-
-  @media screen and(min-width: $desktop) {
-    width: 255px;
-  }
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  text-transform: uppercase;
 }
 
 .modal__event__button__more:hover,
