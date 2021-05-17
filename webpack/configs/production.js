@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const configurateStaticHtmlPages = require('../utils/static-pages');
+const configureStaticHtmlPages = require('../utils/static-pages');
 
 module.exports = env => ({
   devtool: 'source-map',
@@ -39,20 +39,7 @@ module.exports = env => ({
     ],
   },
   plugins: [
-    ...configurateStaticHtmlPages(),
-    // new HtmlWebpackPlugin({
-    //   // hash: false,
-    //   // inject: false,
-    //   template: './static/index.hbs',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'index.html',
-    //   template: './static/index.html',
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'library.html',	
-    //   template: './static/library.html',
-    // }),	
+    ...configureStaticHtmlPages(),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[name].[id].[contenthash].css',

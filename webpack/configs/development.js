@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('../utils/paths');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const configurateStaticHtmlPages = require('../utils/static-pages');
+const configureStaticHtmlPages = require('../utils/static-pages');
 
 module.exports = env => ({
   devtool: 'cheap-eval-source-map',
@@ -21,23 +21,7 @@ module.exports = env => ({
     ],
   },
   plugins: [
-    ...configurateStaticHtmlPages(),
-    // new HtmlWebpackPlugin({
-    //   // hash: false,
-    //   // inject: false,
-    //   template: './static/index.hbs',
-    // }),
-    // new OptimizeCssAssetsPlugin({
-    //   cssProcessorOptions: {
-    //     safe: true,
-    //     discardComments: {
-    //       removeAll: true,
-    //     },
-    //   },
-    // }),
-    // new HtmlWebpackPlugin({
-    // template: './static/index.html',
-    // })
+    ...configureStaticHtmlPages(),
   ],
   devServer: {
     contentBase: paths.BUILD_DIR,
