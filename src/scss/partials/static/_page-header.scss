@@ -170,6 +170,7 @@
 
 .choose-country {
   font-size: 15.5px;
+  text-align: start;
 
   background-image: url('@images/header/polygon.svg');
   background-repeat: no-repeat, repeat;
@@ -336,3 +337,45 @@
     color: $decoration-color;
   }
 }
+// ----------------------------------------------------
+// choose-country через список
+
+// .choose-country:focus {
+//   border-bottom-left-radius: 0px;
+//   border-bottom-right-radius: 0px;
+// }
+
+// .choose-cont-list {
+//   font-family: Montserrat;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 16px;
+//   line-height: 1.25;
+
+//   color: #cccccc;
+//   background-color: rgba(255, 255, 255, 0.2);
+//   backdrop-filter: blur(20px);
+//   text-align: start;
+//   padding-top: 6px;
+//   // padding-left: 30px;
+//   border-bottom-left-radius: 20px;
+//   border-bottom-right-radius: 20px;
+
+//   & > li {
+//     padding: 1px 0px 1px 30px;
+//     margin-bottom: 2px;
+
+//     &:last-child {
+//       margin-bottom: 0px;
+//       border-bottom-left-radius: 20px;
+//       border-bottom-right-radius: 20px;
+//     }
+
+//     &:hover,
+//     &:focus {
+//       color: $white;
+//       background-color: $text-accent-color;
+//       cursor: pointer;
+//     }
+//   }
+// }
