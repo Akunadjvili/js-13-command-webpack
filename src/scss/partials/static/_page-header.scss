@@ -151,6 +151,9 @@
   border: transparent;
   outline: none;
   cursor: pointer;
+
+  transition: $trans-duration $trans-function;
+
   &::placeholder {
     color: $decoration-color;
   }
@@ -177,6 +180,8 @@
   background-position: right 30px top 50%, 0 0;
   background-size: width= '12px' height= '12px';
   appearance: none;
+
+  transition: $trans-duration $trans-function;
 
   &:hover,
   &:focus {
@@ -257,6 +262,8 @@
   outline: none;
   cursor: pointer;
 
+  transition: $trans-duration $trans-function;
+
   @include for-size(tablet) {
     height: 30px;
     font-size: 12px;
@@ -322,6 +329,8 @@
 .personal-button {
   width: 150px;
 
+  transition: $trans-duration $trans-function;
+
   &:hover,
   &:focus {
     color: $text-accent-color;
@@ -331,6 +340,8 @@
 .active-header-button {
   color: $white;
   background-color: $text-accent-color;
+
+  transition: $trans-duration $trans-function;
 
   &:hover,
   &:focus {
@@ -374,6 +385,8 @@
   & > li {
     padding: 1px 0px 1px 30px;
     margin-bottom: 2px;
+
+    transition: $trans-duration $trans-function;
 
     &:last-child {
       margin-bottom: 0px;
