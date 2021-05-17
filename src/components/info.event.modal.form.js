@@ -1,6 +1,9 @@
 import { eventById } from "@scripts/api/api.ticketmaster.features"
 import storage from "@scripts/storage/event.storage"
 import notify from '@components/message.notify.js';
+import fabricPagination from '@components/pagination.fabric.js';
+import templateEventCard from '@templates/dynamic/event.info.modal.hbs';
+import SearchEventProvider from '@providers/search.events.provider.js';
 
 export default class InfoEventModalForm {
   constructor({ modal, template }) {
@@ -12,6 +15,7 @@ export default class InfoEventModalForm {
     return {
       hideEvent: this.hideEvent.bind(this),
       keyEvent: this.keyEvent.bind(this),
+      findMore: this.findMore.bind(this),
     }
   }
 
@@ -56,29 +60,33 @@ export default class InfoEventModalForm {
     this.refs.controls = document.querySelectorAll('[data-controls]');
     this.refs.find = document.querySelector('[data-find]');
     this.refs.closeCustom = document.querySelector('button[data-action="close-modal-custom"]');
+    this.refs?.closeCustom?.addEventListener('click', this.binds.hideEvent)
     this.refs?.controls?.forEach(control => control?.addEventListener('click', this.controlsHandler))
-    this.refs?.find?.addEventListener('click', this.findMore)
+    this.refs?.find?.addEventListener('click', this.binds.findMore)
   }
 
   removeEvents() {
     this.refs?.controls?.forEach(control => control?.removeEventListener('click', this.controlsHandler))
     this.refs?.closeCustom?.removeEventListener('click', this.binds.hideEvent)
-    this.refs?.find?.removeEventListener('click', this.findMore)
+    this.refs?.find?.removeEventListener('click', this.binds.findMore)
   }
 
   findMore(event) {
-    console.log(event);
     const targetEl = event.target;
     const queryInput = document.querySelector('.js-search-input');
-    const searchForm = document.querySelector('.search-form');
+    const countrySelect = document.querySelector('.js-country-select');
     queryInput.value = targetEl.dataset.id;
     event.preventDefault();
-    searchForm.submit();
+
+    const data = {
+      query: queryInput.value,
+      country: countrySelect.value
+    }
+    fabricPagination(SearchEventProvider, window.eventModal, data);
     this.#close();
   }
 
   controlsHandler(event) {
-    // console.log(event.target);
     const targetEl = event.target;
     if (targetEl.dataset.action && targetEl.dataset.id) {
 

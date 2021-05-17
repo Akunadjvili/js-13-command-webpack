@@ -1,6 +1,9 @@
 import libraryTemplate from '@templates/dynamic/library.placeholder.hbs';
 import InfoEventModalForm from '@scripts/components/info.event.modal.form.js';
 
+
+import fabricPagination from '@components/pagination.fabric.js';
+
 import PaginationBar from '@components/pagination.bar';
 import PaginationPlaceholder from '@components/pagination.placeholder.js';
 
@@ -16,10 +19,7 @@ export default class LibraryContainer {
         this.refs = this.#getReference(".js-personal-account");
         this.binds = this.setBinds();
         this.refs.content.innerHTML = this.template();
-        this.eventModal = new InfoEventModalForm({
-            modal: '.js-modal',
-            template: templateEventCard,
-        });
+
         this.addEvents();
         //this.binds.loadSavedEvents();
     }
@@ -46,29 +46,16 @@ export default class LibraryContainer {
         this.refs.content.innerHTML = ""
     }
 
-    fabricPagination(provider, params) {
-        new PaginationBar({
-            container: '.pagination-container',
-            viewProvider: new PaginationPlaceholder({
-                selector: '.pgn__cards-holder',
-                template: templateEventsList,
-            }),
-            dataProvider: new provider(),
-            action: this.eventModal.openEvent.bind(this.eventModal),
-            params,
-        });
-    }
-
     loadSavedEvents() {
         this.refs.loadSavedEvents.classList.add('active-header-button')
         this.refs.loadSavedTickets.classList.remove('active-header-button')
-        this.fabricPagination(BookedEventProvider);
+        fabricPagination(BookedEventProvider, window.eventModal);
     }
 
     loadSavedTickets() {
         this.refs.loadSavedEvents.classList.remove('active-header-button')
         this.refs.loadSavedTickets.classList.add('active-header-button')
-        this.fabricPagination(BoughtEventProvider);
+        fabricPagination(BoughtEventProvider, window.eventModal);
     }
 
 };

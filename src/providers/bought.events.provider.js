@@ -27,7 +27,9 @@ export default class BoughtEventProvider extends Provider {
       ];
       const data = await eventsByIds(ids.slice(...interval))
       const events = data.reduce((acc, value) => {
-        acc.push(value._embedded.events[0])
+        if (value._embedded?.events) {
+          acc.push(value._embedded.events[0]);
+        }
         return acc
       }, [])
       this.notify({

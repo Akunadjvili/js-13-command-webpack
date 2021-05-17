@@ -8,16 +8,15 @@ import '@components/button.backtotop';
 import teamMarkUpTpl from '@templates/dynamic/team.info.hbs';
 import TeamModalForm from '@components/team.modal.form'
 
-import PaginationBar from '@components/pagination.bar';
-import PaginationPlaceholder from '@components/pagination.placeholder.js';
+import fabricPagination from '@components/pagination.fabric.js';
 import RandomEventProvider from '@providers/random.events.provider.js';
 import SearchEventProvider from '@providers/search.events.provider.js';
+
 
 import InfoEventModalForm from '@scripts/components/info.event.modal.form.js';
 import StandardFireBaseAuth from '@scripts/components/firebase.auth';
 
 import templateEventCard from '@templates/dynamic/event.info.modal.hbs';
-import templateEventsList from '@templates/dynamic/events.list.hbs';
 
 
 const teamLinkRef = document.querySelector('.team-link');
@@ -32,29 +31,20 @@ async function openFormHandler(event) {
     await modal.show.bind(modal)();
 }
 
-const eventModal = new InfoEventModalForm({
+const globalModal = new InfoEventModalForm({
     modal: '.js-modal',
     template: templateEventCard,
 });
 
+window.eventModal = globalModal.openEvent.bind(globalModal);
+
+
 new StandardFireBaseAuth({ placeholder: '.header-auth', entry });
-
-function fabricPagination(provider, action, params,) {
-    new PaginationBar({
-        container: '.pagination-container',
-        viewProvider: new PaginationPlaceholder({
-            selector: '.pgn__cards-holder',
-            template: templateEventsList,
-        }),
-        dataProvider: new provider(),
-        action,
-        params,
-    });
-}
-
 async function entry() {
-    fabricPagination(RandomEventProvider, eventModal.openEvent.bind(eventModal));
+    fabricPagination(RandomEventProvider, window.eventModal);
 }
+
+
 
 
 const queryInput = document.querySelector('.js-search-input');
@@ -67,8 +57,8 @@ const find = function (event) {
         query: queryInput.value,
         country: countrySelect.value
     }
-
-    fabricPagination(SearchEventProvider, eventModal.openEvent.bind(eventModal), data);
+    // console.log("HERE");
+    fabricPagination(SearchEventProvider, window.eventModal, data);
 }
 
 searchForm.addEventListener('submit', find);

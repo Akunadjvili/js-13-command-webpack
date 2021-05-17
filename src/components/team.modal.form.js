@@ -1,7 +1,7 @@
 import notify from '@components/message.notify.js';
 import fetchTeam from '@scripts/api/api.team.service';
 
-export default class AuthorizationModalForm {
+export default class TeamModalForm {
     constructor({ modal, template }) {
         this.template = template;
         this.modal = modal;
