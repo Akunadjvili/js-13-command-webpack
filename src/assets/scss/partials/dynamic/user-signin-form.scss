@@ -19,7 +19,7 @@ a {
   width: 500px;
   margin: auto;
   max-width: 310px;
-  min-height: 450px;
+  min-height: 370px;
   position: relative;
   top: 10%;
   $gradient: linear-gradient(
@@ -32,7 +32,7 @@ a {
   background-size: cover;
   background-position: left;
   //  border: 6px solid #7922CC;
-  border-radius: 200px 0px 200px 0px;
+   border-radius: 150px 0px 150px 0px;
 
   margin: 0;
   font: 500 10px/12px $white;
@@ -56,9 +56,9 @@ a {
 
   @media screen and (min-width: $tablet) {
     font: 500 12px/14px $primary-font;
-    max-width: 725px;
-    min-height: 770px;
-    border-radius: 250px 0px 250px 0px;
+    max-width: 425px;
+    min-height: 475px;
+    border-radius: 200px 0px 200px 0px;
     background-image: $gradient, url('@images/tablet/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
@@ -73,6 +73,8 @@ a {
   }
 
   @media screen and (min-width: $desktop) {
+     max-width: 630px;
+    min-height: 650px;
     background-image: $gradient, url('@images/desktop/pic.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
@@ -91,12 +93,15 @@ a {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding: 100px 10px 70px 10px;
+  padding: 70px 10px 70px 10px;
 
   text-align: center;
 
   @media screen and (min-width: $tablet) {
-    padding: 200px 60px 50px 60px;
+    padding: 120px 60px 50px 60px;
+  }
+   @media screen and (min-width: $desktop) {
+    padding: 140px 60px 50px 60px;
   }
 }
 
@@ -110,6 +115,7 @@ a {
   transform: rotateY(180deg);
   backface-visibility: hidden;
   transition: all 0.4s linear;
+
 }
 
 .login-html .sign-in,
@@ -136,6 +142,10 @@ a {
   border-bottom: 3px solid transparent;
 
   @media screen and (min-width: $tablet) {
+    font-size: 18px;
+    margin: 0 20px 0 0;
+  }
+   @media screen and (min-width: $desktop) {
     font-size: 22px;
     margin: 0 20px 0 0;
   }
@@ -174,6 +184,8 @@ a {
   }
 
   @media screen and (min-width: $tablet) and (max-width: $desktop - 1) {
+ top: 70%;
+    left: 50%;
     max-width: 400px;
     width: 100%;
     //  min-height: 609px;
@@ -214,6 +226,12 @@ a {
   background: $card-border-color;
 
   @media screen and (min-width: $tablet) {
+    width: 300px;
+    height: 34px;
+    padding: 5px 20px;
+    font-size: 14px;
+  }
+   @media screen and (min-width: $desktop) {
     width: 400px;
     height: 44px;
     padding: 5px 20px;
@@ -231,7 +249,12 @@ a {
   color: $decoration-color;
   font-size: 10px;
 
-  @media screen and (min-width: $tablet) {
+   @media screen and (min-width: $tablet) {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: $desktop) {
     font-size: 16px;
     margin-bottom: 20px;
   }
@@ -320,7 +343,10 @@ input::placeholder {
 .margin-bottom {
   margin-bottom: 10px;
 
-  @media screen and (min-width: $tablet) {
+@media screen and (min-width: $tablet) {
+    margin-bottom: 20px;
+  }
+   @media screen and (min-width: $desktop) {
     margin-bottom: 40px;
   }
 }
@@ -342,24 +368,24 @@ input::placeholder {
   outline: none;
   cursor: pointer;
 
-  @media screen and (min-width: $tablet) {
-    height: 44px;
+   @media screen and (min-width: $tablet) {
+    height: 34px;
 
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+   
+    line-height: 1.25;
 
     font-size: 14px;
-    line-height: 1.25;
-
-    font-size: 16px;
-    line-height: 1.25;
+    
   }
 
   @media screen and (min-width: $desktop) {
     height: 44px;
 
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
 
     font-size: 16px;
   }
@@ -369,7 +395,10 @@ input::placeholder {
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  @media screen and (min-width: $tablet) {
+   @media screen and (min-width: $tablet) {
+    margin-top: 40px;
+  }
+   @media screen and (min-width: $desktop) {
     margin-top: 60px;
   }
 }
