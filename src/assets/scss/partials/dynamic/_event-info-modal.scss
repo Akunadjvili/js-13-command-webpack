@@ -263,7 +263,7 @@
   @media screen and(min-width: $desktop) {
     flex-flow: row;
     justify-content: space-between;
-    padding-right: 345px;
+    padding-right: 270px;
     padding-left: 70px;
     padding-bottom: 62px;
   }
@@ -348,4 +348,28 @@
 
 .modal__event__button--active {
   background-color: #dc56c5;
+}
+
+.btn__status__save {
+  background-image: linear-gradient(
+    to right,
+    #cfcdcd 0%,
+    #3d3d3c 51%,
+    #000000 100%
+  );
+  background-size: 120% auto;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.btn__status__buy {
+  background-image: linear-gradient(
+    to right,
+    #b6aeb9 0%,
+    #7d4385 51%,
+    #420332 100%
+  );
+  background-size: 120% auto;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  color: #18181a;
 }
