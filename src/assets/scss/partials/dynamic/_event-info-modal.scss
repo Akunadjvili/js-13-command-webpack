@@ -22,7 +22,7 @@
 
 .event__image__small {
   width: 102px;
-  padding-top: 75px;
+  padding-top: 55px;
   object-fit: cover;
   margin-left: auto;
   margin-right: auto;
@@ -33,7 +33,7 @@
   }
   @media screen and(min-width: $desktop) {
     width: 132px;
-    padding-top: 62px;
+    padding-top: 42px;
   }
 }
 
@@ -63,7 +63,7 @@
   padding-bottom: 25px;
   @media screen and(min-width: $tablet) {
     padding-left: 50px;
-    padding-top: 43px;
+    padding-top: 35px;
     padding-bottom: 20px;
   }
   @media screen and(min-width: $desktop) {
@@ -80,14 +80,9 @@
 
   @media screen and(min-width: $tablet) {
     display: block;
-    // min-width: 233px;
-    // max-height: 416px;
+    
   }
 
-  // @media screen and(min-width: $desktop) {
-  //   width: 3600px;
-  //   height: 641px;
-  // }
 }
 
 .image__poster {
@@ -254,19 +249,24 @@
 
   flex-wrap: wrap;
   white-space: nowrap;
-  padding-bottom: 54px;
+  padding-bottom: 70px;
 
   @media screen and(min-width: $tablet) {
-    padding-bottom: 9px;
+    padding-bottom: 25px;
   }
 
   @media screen and(min-width: $desktop) {
-    flex-flow: row;
-    justify-content: space-between;
-    padding-right: 270px;
-    padding-left: 70px;
-    padding-bottom: 62px;
+    
+    padding-bottom: 22px;
   }
+}
+
+.modal__event__button__top {
+   display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .modal__event__button__more {
@@ -300,7 +300,7 @@
 }
 
 .modal__event__button__save {
-  width: 138px;
+  width: 150px;
   height: 40px;
   background-color: $modal-background-color;
   border: 1px solid $button-accent-color;
@@ -315,6 +315,7 @@
   padding-top: 9px;
   padding-bottom: 9px;
   text-transform: uppercase;
+ 
 }
 
 .modal__event__button__more:hover,

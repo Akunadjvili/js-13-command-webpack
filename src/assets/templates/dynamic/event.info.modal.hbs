@@ -4,6 +4,15 @@
         <div class="event__image__small">
             <img class="image modal__poster__small" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
         </div>
+        <div class="modal__event__button__top">
+        <button type="button" class="modal__event__button__save {{#if booked}}btn__status__save{{/if}}" data-id="{{id}}"
+            data-action="booked" data-controls>{{#if booked}}
+            REMOVE EVENT
+            {{else}}
+            SAVE EVENT
+            {{/if}}</button>
+            </div>
+
         <div class="modal__event__information">
             <div class="modal__image_poster">
                 <img class="image image__poster" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
@@ -96,11 +105,7 @@
         </div>
         <div class="modal__event__button__down">
             <button type="button" class="modal__event__button__more" data-id="{{name}}" data-find>MORE FROM THIS AUTHOR</button>
-            <button type="button" class="modal__event__button__save {{#if booked}}btn__status__save{{/if}}" data-id="{{id}}" data-action="booked" data-controls>{{#if booked}}
-            REMOVE EVENT
-            {{else}}
-            SAVE EVENT
-            {{/if}}</button>
+            
         </div>
         
                      
