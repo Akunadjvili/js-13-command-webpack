@@ -21,8 +21,13 @@ body {
   font-family: $primary-font;
   margin: auto;
   overflow-x: hidden;
+  // background-color: #0e0e0e;
+  //linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%)
+  background: url('@images/noise-body.png'), #0e0e0e;
+  //url('@images/figure-body.svg'),
+  // background-size: 100% 100%;
+  // background-position-y: -384px;
 }
-
 
 body.modal-open {
   overflow: hidden;
