@@ -1,10 +1,14 @@
 import { eventById } from "@scripts/api/api.ticketmaster.features"
 import storage from "@scripts/storage/event.storage"
 import notify from '@components/message.notify.js';
-import fabricPagination from '@components/pagination.fabric.js';
 import templateEventCard from '@templates/dynamic/event.info.modal.hbs';
-import SearchEventProvider from '@providers/search.events.provider.js';
 
+
+import fabricPagination from '@components/pagination.fabric.js';
+
+import BookedEventProvider from '@providers/booked.events.provider.js';
+import BoughtEventProvider from '@providers/bought.events.provider.js';
+import SearchEventProvider from '@providers/search.events.provider.js';
 export default class InfoEventModalForm {
   constructor({ modal, template }) {
     this.template = template;
@@ -40,6 +44,7 @@ export default class InfoEventModalForm {
       const data = { ... await eventById(`${id}`), ...storage.event(id) }
 
       this.refs.overlay.classList.remove('is-hidden');
+      // this.refs.content.classList.add('animate__animated');
       document.body.classList.add("modal-open")
       this.refs.content.innerHTML = this.template({ ...data._embedded.events[0], ...storage.event(id) }); //._embedded.events[0]
 
@@ -86,27 +91,55 @@ export default class InfoEventModalForm {
     this.#close();
   }
 
+
   controlsHandler(event) {
+    function update(provider) {
+      switch (provider) {
+        case "BoughtEventProvider":
+          fabricPagination(BoughtEventProvider, window.eventModal);
+          break
+        case "BookedEventProvider":
+          fabricPagination(BookedEventProvider, window.eventModal);
+          break
+      }
+    }
     const targetEl = event.target;
     if (targetEl.dataset.action && targetEl.dataset.id) {
-
       const [action, id] = [targetEl.dataset.action, targetEl.dataset.id];
       const state = storage.event(id);
-      console.log("state", state);
       state[action] = !state[action]
       storage.update(id, state);
-      if (state[action]) {
-        targetEl.classList.add("modal__event__button--active");
-      } else {
-        targetEl.classList.remove("modal__event__button--active");
+      const container = document.querySelector(`.pagination-container`);
+      const provider = container?.getAttribute("provider");
+      if (action === "expensive" || action === "cheap") {
+        if (state[action]) {
+          targetEl.innerHTML = "SELL TICKETS"
+          targetEl.classList.add("btn__status__buy");
+        } else {
+          targetEl.innerHTML = "BUY TICKETS"
+          targetEl.classList.remove("btn__status__buy");
+        }
       }
+
+      if (action === "booked") {
+        if (state[action]) {
+          targetEl.innerHTML = "REMOVE EVENT"
+          targetEl.classList.add("btn__status__save");
+        } else {
+          targetEl.innerHTML = "SAVE EVENT"
+          targetEl.classList.remove("btn__status__save");
+
+        }
+
+      }
+      update(provider);
     }
   }
 
 
-
   #close() {
     this.refs.overlay.classList.add('is-hidden');
+    // this.refs.content.classList.remove('animate__animated');
     this.removeEvents();
     this.refs.content.innerHTML = ""
     document.body.classList.remove("modal-open")

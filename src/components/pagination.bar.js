@@ -1,6 +1,13 @@
 import pgnTemplate from '@templates/dynamic/pagination.hbs';
 import debounce from 'lodash.debounce';
 import utils from '@scripts/utils/utils.js';
+
+function getAnyClass(obj) {
+  if (typeof obj === "undefined") return "undefined";
+  if (obj === null) return "null";
+  return obj.constructor.name;
+}
+
 export default class PaginationBar {
   PgnPgsBtn = 5;
   constructor({
@@ -13,6 +20,7 @@ export default class PaginationBar {
     params,
   }) {
     this.dataProvider = dataProvider;
+
     this.viewProvider = viewProvider;
     this.params = params;
     this.desktop = desktop;
@@ -21,6 +29,7 @@ export default class PaginationBar {
     if (action) {
       this.refs.cards.addEventListener('click', action);
     }
+    this.refs.container.setAttribute("provider", getAnyClass(dataProvider))
     this.hidePagination();
     this.dataProvider.observe(this, this.update);
     this.dataProvider.getData(page, this.params);

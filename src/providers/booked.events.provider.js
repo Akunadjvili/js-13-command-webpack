@@ -26,8 +26,11 @@ export default class BookedEventProvider extends Provider {
         (page - 1) * this.getPageDataSize() + this.getPageDataSize(),
       ];
       const data = await eventsByIds(ids.slice(...interval))
+      // console.log(data);
       const events = data.reduce((acc, value) => {
-        acc.push(value._embedded.events[0])
+        if (value._embedded?.events) {
+          acc.push(value._embedded.events[0]);
+        }
         return acc
       }, [])
       this.notify({

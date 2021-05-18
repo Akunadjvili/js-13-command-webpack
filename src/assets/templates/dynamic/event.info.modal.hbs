@@ -1,5 +1,5 @@
 
-    <div class="event__modal__container" style="background-color: #FFF2FD">
+    <div class="event__modal__container animate__animated animate__zoomIn" style="background-color: #FFF2FD">
       
         <div class="event__image__small">
             <img class="image modal__poster__small" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
@@ -58,8 +58,11 @@
                             </p>
                         </div>
                         <div class="modal__event__button__box">
-                        <button type="button" class=" modal__event__button btn__standart " data-id="{{id}}" data-action="cheap" data-controls>BUY
-                            TICKETS</button>
+                        <button type="button" class=" modal__event__button btn__standart  
+                        {{#if cheap}}btn__status__buy{{/if}}" data-id="{{id}}" 
+                        data-action="cheap" data-controls>
+                        {{#if cheap}}SELL TICKETS{{else}}BUY TICKETS{{/if}}
+                        </button>
                             </div>
                         <div class="modal__barcode_standart_vip">
                             <svg class="modal__barcode" viewBox="0 0 29 21" fill="none"
@@ -82,8 +85,10 @@
                             <p class="modal__event__info">VIP {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
                         </div>
                         <div class="modal__event__button__box">
-                        <button type="button" class=" modal__event__button btn__vip "  data-action="expensive" data-id="{{id}}" data-controls>BUY
-                            TICKETS</button>
+                        <button type="button" class=" modal__event__button btn__vip  
+                        {{#if expensive}}btn__status__buy{{/if}}"  data-action="expensive" 
+                        data-id="{{id}}" data-controls>
+                        {{#if expensive}}SELL TICKETS{{else}}BUY TICKETS{{/if}}</button>
                             </div>
                     </li>
                 </ul>
@@ -91,10 +96,10 @@
         </div>
         <div class="modal__event__button__down">
             <button type="button" class="modal__event__button__more" data-id="{{name}}" data-find>MORE FROM THIS AUTHOR</button>
-            <button type="button" class="modal__event__button__save {{#if booked}}modal__event__button--active{{/if}}" data-id="{{id}}" data-action="booked" data-controls>{{#if booked}}
-            remove event
+            <button type="button" class="modal__event__button__save {{#if booked}}btn__status__save{{/if}}" data-id="{{id}}" data-action="booked" data-controls>{{#if booked}}
+            REMOVE EVENT
             {{else}}
-            save event
+            SAVE EVENT
             {{/if}}</button>
         </div>
         

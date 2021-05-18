@@ -8,7 +8,7 @@
 .modal__overlay {
   overflow-y: auto;
   position: fixed;
-  background: rgba(0, 0, 0, 0.8);
+  background: $modal-overlay-color;
   top: 0;
   left: 0;
   right: 0;

@@ -116,7 +116,7 @@ async function store(list) {
           case "add": {
             let path = `users/${userId}/event/`;
             const hash = await firebaseAPI.getKey(path);
-            refresh(+id, state, hash)
+            refresh(id, state, hash)
             path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, { id, booked, expensive, cheap });
             console.log(`ADD==>${id}`);
@@ -131,7 +131,7 @@ async function store(list) {
           case "remove": {
             const path = `users/${userId}/event/${hash}/`;
             await firebaseAPI.set(path, null);
-            refresh(+id, state, hash)
+            refresh(id, state, hash)
             console.log(`REMOVE==>${id}`);
             break;
           }
