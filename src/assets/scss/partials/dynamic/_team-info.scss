@@ -1,11 +1,16 @@
 .team{
   
-    background-color: $main-background-overlay;
+    background-color: $main-top-background-overlay;
     color: $text-accent-color;
     display: block;
     align-items: center;
     width: 400px;
     font-family: "Montserrat", sans-serif;
+
+    border-top-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+
+    padding: 25px 0;
 
     @media screen and(min-width: $tablet){
         width: 700px;
