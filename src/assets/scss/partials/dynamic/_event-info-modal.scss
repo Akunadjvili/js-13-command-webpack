@@ -192,12 +192,29 @@
     justify-content: start;
   }
 }
-
-.modal__barcode {
-  margin-right: 13px;
+.modal__barcode_standart_vip.modal__barcode::before{
+  display: block;
+  content: '';
   width: 24px;
   height: 16px;
+  left: 48.83%;
+  right: 48.91%;
+  top: 37.16%;
+  bottom: 62.03%;
+  margin-right: 13px;
+  
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-image: url('@images/barcode.svg');
+
+   @media screen and(min-width: $desktop) {
+    width: 29px;
+    height: 20px;
+  }
 }
+
+
 
 .modal__event__button__box {
   display: flex;
@@ -300,7 +317,7 @@
 }
 
 .modal__event__button__save {
-  width: 150px;
+  
   height: 40px;
   background-color: $modal-background-color;
   border: 1px solid $button-accent-color;
@@ -329,18 +346,28 @@
 }
 
 .modal__event_close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 17px;
   height: 17px;
   top: 25px;
-  right: 25px;
-
-  @media screen and(min-width: $desktop) {
+  right: 25px;  
+  
+  background-image: url('@images/icon-close-blue.svg');
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+     @media screen and(min-width: $desktop) {
     width: 25px;
     height: 25px;
     top: 30px;
     right: 30px;
   }
 }
+
+
 
 .modal__event_close:hover,
 .modal__event_close:focus {
