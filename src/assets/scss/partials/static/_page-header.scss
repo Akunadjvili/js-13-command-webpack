@@ -347,6 +347,8 @@
 // select
 /* The container must be positioned relative: */
 .custom-select {
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 
   font-family: $primary-font;
@@ -359,14 +361,21 @@
   backdrop-filter: blur(20px);
 
   border-radius: 20px;
+
   border: transparent;
   outline: none;
   cursor: pointer;
 
-  &:focus {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border: 1px solid #939393;
+  // &:hover,
+  // &:focus {
+  //   border-bottom-left-radius: 0px;
+  //   border-bottom-right-radius: 0px;
+  //   border-bottom: 1px solid #939393;
+  // }
+
+  @include for-size(tablet) {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 
@@ -403,7 +412,7 @@
 
 /* style the items (options), including the selected item: */
 .select-items div {
-  padding: 1px 30px;
+  padding: 1px 20px;
 
   // background-color: rgba(255, 255, 255, 0.2);
   // backdrop-filter: blur(20px);
@@ -439,10 +448,8 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
-  &:hover,
-  &:focus {
-    color: $white;
-    background-color: $text-accent-color;
-    cursor: pointer;
-  }
+
+  color: $white;
+  background-color: $text-accent-color;
+  cursor: pointer;
 }
