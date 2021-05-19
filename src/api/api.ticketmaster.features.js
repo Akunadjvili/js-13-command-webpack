@@ -8,6 +8,14 @@ export async function eventById(id) {
     return data;
 }
 
+export async function eventByAuthor(page, query, country, size = 20) {
+    progress.show();
+    console.log(`/${query}`);
+    const data = await ticketmaster(`/id=${query}`)
+    progress.hide();
+    return data;
+}
+
 export async function randomEventByPage(page, size = 20) {
     progress.show();
     const data = await ticketmaster(`/size=${size}&page=${page}`)

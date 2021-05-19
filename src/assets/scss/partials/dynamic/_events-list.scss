@@ -1,0 +1,10 @@
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: $white;
+  background-color: $main-top-background-overlay;
+  text-align: center;
+  border-radius: 20px 0 20px 0;
+}

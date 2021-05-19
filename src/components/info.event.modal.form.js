@@ -34,7 +34,8 @@ export default class InfoEventModalForm {
 
   async openEvent(event) {
     const targetEl = event.target;
-    if (targetEl.dataset.attr) {
+    console.log(targetEl);
+    if (targetEl.dataset.attr && targetEl.nodeName !== "A") {
       this.refs = this.#getReference(this.modal);
       this.binds = this.setBinds();
       this.refs.close?.classList.add("visually-hidden");
@@ -54,11 +55,12 @@ export default class InfoEventModalForm {
 
       event.preventDefault();
     } else {
+
       if (targetEl.nodeName === "A") {
         window.open(targetEl.href, '_blank');
       }
-
     }
+
   }
 
   addEvents() {
