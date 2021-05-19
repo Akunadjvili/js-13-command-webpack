@@ -12,11 +12,11 @@
   height: 364px;
   margin-left: auto;
   margin-right: auto;
-  // max-width: 320px;
   background-image: 
 //   rgba(11, 11, 11, 0.5),
     linear-gradient(
       180deg,
+      rgba(11, 11, 11, 0.5) 262px,
       rgba(13, 13, 13, 0.19) 262px,
       rgba(14, 14, 14, 0.8) 364px
     ),
@@ -33,6 +33,7 @@
 //   rgba(11, 11, 11, 0.5),
       linear-gradient(
         180deg,
+        rgba(11, 11, 11, 0.5) 262px,
         rgba(13, 13, 13, 0.19) 262px,
         rgba(14, 14, 14, 0.8) 364px
       ),
@@ -46,6 +47,7 @@
     // rgba(11, 11, 11, 0.5),
       linear-gradient(
         180deg,
+        rgba(11, 11, 11, 0.5) 344px,
         rgba(13, 13, 13, 0.19) 344px,
         rgba(14, 14, 14, 0.8) 446px
       ),
@@ -339,5 +341,108 @@
   &:hover,
   &:focus {
     color: $decoration-color;
+  }
+}
+// -----------------------------------
+// select
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: $decoration-color;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+  border: transparent;
+  outline: none;
+  cursor: pointer;
+
+  &:focus {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid #939393;
+  }
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  padding: 10px 20px;
+  text-align: start;
+  //   background: rgba(255, 255, 255, 0.2);
+  //   backdrop-filter: blur(20px);
+  // border-bottom-left-radius: 0px;
+  // border-bottom-right-radius: 0px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: '';
+  top: 16px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  border-color: $decoration-color transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent $decoration-color transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div {
+  padding: 1px 30px;
+
+  // background-color: rgba(255, 255, 255, 0.2);
+  // backdrop-filter: blur(20px);
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+
+  text-align: start;
+  color: #cccccc;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  //
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  &:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $text-accent-color;
+    cursor: pointer;
   }
 }
