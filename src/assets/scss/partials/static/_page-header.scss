@@ -399,6 +399,7 @@
 .animation-container:focus .animation-title {
   display: block;
 }
+
 // -----------------------------------
 // select
 /* The container must be positioned relative: */
@@ -422,12 +423,18 @@
   outline: none;
   cursor: pointer;
 
-  // &:hover,
-  // &:focus {
-  //   border-bottom-left-radius: 0px;
-  //   border-bottom-right-radius: 0px;
-  //   border-bottom: 1px solid #939393;
-  // }
+  &:hover,
+  &:focus {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #939393;
+  }
+
+  .custom-select-active {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #939393;
+  }
 
   @include for-size(tablet) {
     margin-left: 0px;
