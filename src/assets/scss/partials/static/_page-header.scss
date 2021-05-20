@@ -223,9 +223,19 @@
   transition: $trans-duration $trans-function;
 
   & > .hiden-container {
+    position: absolute;
+    left: -200px;
+    top: 5px;
+
     display: none;
     transition: $trans-duration $trans-function;
     text-align: center;
+
+    @include for-size(desktop) {
+      left: -270px;
+    }
+
+    transition: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
   &:hover .hiden-container {
