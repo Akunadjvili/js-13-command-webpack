@@ -162,15 +162,27 @@
     color: $decoration-color;
   }
 
-  &:hover,
   &:focus {
-    color: $text-accent-color;
+    color: $white;
+    background-color: $text-accent-color;
+
+    &::placeholder {
+      color: $white;
+      background-color: $text-accent-color;
+    }
   }
+
+  //  background-color: $text-accent-color;
+
+  // &:hover,
+  // &:focus {
+  //   color: $white;
+  // }
 }
 
 .search-btn {
   position: absolute;
-  top: 15px;
+  top: 14px;
   right: 30px;
   background-color: transparent;
 }
@@ -203,24 +215,29 @@
 // registration
 // --------------------------------------------------------
 .registration {
+  display: flex;
   text-align: center;
   position: absolute;
   top: 20px;
   right: 20px;
+  transition: $trans-duration $trans-function;
 
-  & > img {
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
+  & > .hiden-container {
+    display: none;
+    margin-right: 10px;
+    transition: $trans-duration $trans-function;
   }
 
-  @include for-size(tablet) {
-    & > img {
-      width: 40px;
-      height: 40px;
-    }
+  &:hover .hiden-container {
+    display: block;
+    cursor: pointer;
+  }
+
+  & > img {
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @include for-size(desktop) {
@@ -232,17 +249,14 @@
 }
 
 .reg-tittle {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.2;
   color: $white;
   text-align: center;
-
-  @include for-size(tablet) {
-    margin-bottom: 5px;
-  }
+  margin-bottom: 5px;
 
   @include for-size(desktop) {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -250,11 +264,11 @@
   font-family: $primary-font;
   font-style: normal;
   font-weight: 400;
-  height: 15px;
+  height: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 8px;
-  line-height: 1.25;
+  font-size: 12px;
+  line-height: 1.2;
   color: $white;
   background-color: rgba(255, 255, 255, 0.2);
 
@@ -299,49 +313,91 @@
 
 // ---------------------------------------------
 // my event and tickets
+
 .personal-account-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding-top: 15px;
+  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // padding-top: 15px;
 
-  & .search-field {
-    margin-right: 10px;
+  // & .search-field {
+  //   margin-right: 10px;
 
-    &:last-child {
-      margin-right: 0px;
-    }
+  //   &:last-child {
+  //     margin-right: 0px;
+  //   }
+  // }
+
+  // @include for-size(tablet) {
+  //   padding-top: 30px;
+
+  //   & .search-field {
+  //     margin-right: 350px;
+
+  //     &:last-child {
+  //       margin-right: 0px;
+  //     }
+  //   }
+  // }
+}
+
+.animation-container {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
   }
 
-  @include for-size(tablet) {
-    padding-top: 30px;
-
-    & .search-field {
-      margin-right: 350px;
-
-      &:last-child {
-        margin-right: 0px;
-      }
-    }
+  &:hover {
+    padding-bottom: 0px;
   }
 }
 
 .personal-button {
-  width: 150px;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
 
-  &:hover,
-  &:focus {
-    color: $text-accent-color;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $white;
 }
 
 .active-header-button {
   color: $white;
   background-color: $text-accent-color;
+  transition: $trans-duration $trans-function;
 
   &:hover,
   &:focus {
-    color: $decoration-color;
+    color: $white;
   }
+}
+
+.animation-title {
+  display: none;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: $decoration-color;
+  transition: $trans-duration $trans-function;
+}
+
+.animation-container:hover .animation-title,
+.animation-container:focus .animation-title {
+  display: block;
 }
 // -----------------------------------
 // select
