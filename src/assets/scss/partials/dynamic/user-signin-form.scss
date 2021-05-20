@@ -131,11 +131,9 @@ a {
 .login-html .tab {
   text-align: center;
   align-items: center;
-  font-size: 16px;
-
-  // margin-right: 15px;
+  font-size: 14px;
   padding-bottom: 5px;
-  margin: 0 20px 30px 0;
+  margin: 0 20px 25px 0;
   display: inline-block;
   border-bottom: 3px solid transparent;
   @media screen and (min-width: $tablet) {
@@ -143,8 +141,8 @@ a {
     font-size: 18px;
   }
   @media screen and (min-width: $desktop) {
-    margin: 0 40px 0 0;
-    font-size: 24px;
+    margin: 0 35px 0 0;
+    font-size: 22px;
   }
 }
 
@@ -349,10 +347,10 @@ input::placeholder {
 .btn {
   font-family: $primary-font;
   font-style: normal;
-  font-weight: 700;
+  // font-weight: 700;
   height: 28px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 12px;
   line-height: 1.7;
   color: $text-accent-color;
@@ -366,8 +364,8 @@ input::placeholder {
   @media screen and (min-width: $tablet) {
     height: 34px;
 
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
 
     line-height: 1.25;
     font-size: 14px;
@@ -376,19 +374,29 @@ input::placeholder {
   @media screen and (min-width: $desktop) {
     height: 44px;
 
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
 
     font-size: 16px;
   }
 }
-
-.btn.google::before {
+.btn-google {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0%;
+}
+.btn-google::before {
   display: block;
   content: '';
-  height: 28px;
-  width: 40px;
-  background-size: 40px;
+  height: 12px;
+  width: 12px;
+  // left: 48.83%;
+  //   right: 48.91%;
+  //   top: 37.16%;
+  //   bottom: 62.03%;
+  margin-right: 3px;
+  background-size: 12px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -396,14 +404,14 @@ input::placeholder {
   fill: $text-accent-color;
   background-image: url('@images/icon-google.svg');
   @media screen and (min-width: $tablet) {
-    height: 34px;
-    width: 50px;
-    background-size: 50px;
+    height: 14px;
+    width: 14px;
+    background-size: 14px;
   }
   @media screen and (min-width: $desktop) {
-    height: 44px;
-    width: 60px;
-    background-size: 60px;
+    height: 18px;
+    width: 18px;
+    background-size: 18px;
   }
 }
 
