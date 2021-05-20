@@ -215,8 +215,8 @@
 // registration
 // --------------------------------------------------------
 .registration {
-  display: flex;
-  text-align: center;
+  // display: flex;
+  // text-align: center;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -224,8 +224,8 @@
 
   & > .hiden-container {
     display: none;
-    margin-right: 10px;
     transition: $trans-duration $trans-function;
+    text-align: center;
   }
 
   &:hover .hiden-container {
@@ -237,7 +237,8 @@
     width: 40px;
     height: 40px;
     margin-left: auto;
-    margin-right: auto;
+    // margin-right: auto;
+    margin-bottom: 25px;
   }
 
   @include for-size(desktop) {
@@ -318,7 +319,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   // display: flex;
   // justify-content: center;
   // padding-top: 15px;
@@ -345,11 +346,16 @@
 }
 
 .animation-container {
-  padding-bottom: 20px;
+  padding-bottom: 13.2px;
   margin-bottom: 10px;
+
+  @include for-size(desktop) {
+    padding-bottom: 16.5px;
+  }
 
   &:last-child {
     margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
   &:hover {
@@ -358,8 +364,8 @@
 }
 
 .personal-button {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   padding: 0px;
   border-radius: 50%;
   margin-left: auto;
@@ -371,6 +377,11 @@
   justify-content: center;
 
   color: $white;
+
+  @include for-size(desktop) {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .active-header-button {
@@ -389,10 +400,15 @@
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 11px;
+  line-height: 1.2;
   color: $decoration-color;
   transition: $trans-duration $trans-function;
+
+  @include for-size(desktop) {
+    font-size: 14px;
+    line-height: 1.25;
+  }
 }
 
 .animation-container:hover .animation-title,
