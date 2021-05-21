@@ -1,5 +1,6 @@
 import { eventById } from "@scripts/api/api.ticketmaster.features"
 import storage from "@scripts/storage/event.storage"
+import firebaseAPI from '@scripts/api/api.firebase.service';
 import notify from '@components/message.notify.js';
 import templateEventCard from '@templates/dynamic/event.info.modal.hbs';
 
@@ -34,7 +35,6 @@ export default class InfoEventModalForm {
 
   async openEvent(event) {
     const targetEl = event.target;
-    console.log(targetEl);
     if (targetEl.dataset.attr && targetEl.nodeName !== "A") {
       this.refs = this.#getReference(this.modal);
       this.binds = this.setBinds();
@@ -43,11 +43,11 @@ export default class InfoEventModalForm {
       this.refs.overlay?.addEventListener('click', this.binds.hideEvent)
       const id = targetEl.dataset.attr;
       const data = { ... await eventById(`${id}`), ...storage.event(id) }
-
+      console.log(data);
       this.refs.overlay.classList.remove('is-hidden');
       // this.refs.content.classList.add('animate__animated');
       document.body.classList.add("modal-open")
-      this.refs.content.innerHTML = this.template({ ...data._embedded.events[0], ...storage.event(id) }); //._embedded.events[0]
+      this.refs.content.innerHTML = this.template({ ...data._embedded.events[0], ...storage.event(id), ...{ "auth": firebaseAPI.isAuth() } }); //._embedded.events[0]
 
       this.addEvents();
 
@@ -66,6 +66,7 @@ export default class InfoEventModalForm {
   addEvents() {
     this.refs.controls = document.querySelectorAll('[data-controls]');
     this.refs.find = document.querySelector('[data-find]');
+    console.log(this.refs.find);
     this.refs.closeCustom = document.querySelector('button[data-action="close-modal-custom"]');
     this.refs?.closeCustom?.addEventListener('click', this.binds.hideEvent)
     this.refs?.controls?.forEach(control => control?.addEventListener('click', this.controlsHandler))
@@ -84,11 +85,14 @@ export default class InfoEventModalForm {
     const countrySelect = document.querySelector('.js-country-select');
     queryInput.value = targetEl.dataset.id;
     event.preventDefault();
-
+    const eventsBtn = document.querySelector('.js-events-btn');
+    const ticketsBtn = document.querySelector('.js-tickets-btn');
     const data = {
       query: queryInput.value,
       country: countrySelect.value
     }
+    eventsBtn?.classList.remove('active-header-button');
+    ticketsBtn?.classList.remove('active-header-button');
     fabricPagination(SearchEventProvider, window.eventModal, data);
     this.#close();
   }
@@ -107,12 +111,20 @@ export default class InfoEventModalForm {
     }
     const targetEl = event.target;
     if (targetEl.dataset.action && targetEl.dataset.id) {
+      if (targetEl.dataset.url) {
+        window.open(targetEl.dataset.url, '_blank');
+        return
+      }
+
       const [action, id] = [targetEl.dataset.action, targetEl.dataset.id];
       const state = storage.event(id);
       state[action] = !state[action]
+
       storage.update(id, state);
+
       const container = document.querySelector(`.pagination-container`);
       const provider = container?.getAttribute("provider");
+
       if (action === "expensive" || action === "cheap") {
         if (state[action]) {
           targetEl.innerHTML = "SELL TICKETS"

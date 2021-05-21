@@ -1,4 +1,4 @@
-
+import notify from '@components/message.notify.js';
 export default class PaginationPlaceholder {
   constructor({ template, selector }) {
     this.template = template;
@@ -29,6 +29,9 @@ export default class PaginationPlaceholder {
 
   draw(holder, data) {
     holder.innerHTML = this.template({ data });
+    if (!data || data.length === 0) {
+      notify.showError({ code: "Data records are empty", message: "Oops ... Empty" });
+    }
   }
 
   scroll() {

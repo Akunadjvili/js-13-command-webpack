@@ -44,13 +44,17 @@ const queryInput = document.querySelector('.js-search-input');
 const searchForm = document.querySelector('.search-form');
 const countrySelect = document.querySelector('.js-country-select');
 
+
 const find = function (event) {
   event.preventDefault();
   const data = {
     query: queryInput.value,
     country: countrySelect.value,
   };
-  // console.log("HERE");
+  const eventsBtn = document.querySelector('.js-events-btn');
+  const ticketsBtn = document.querySelector('.js-tickets-btn');
+  eventsBtn?.classList.remove('active-header-button');
+  ticketsBtn?.classList.remove('active-header-button');
   fabricPagination(SearchEventProvider, window.eventModal, data);
 };
 

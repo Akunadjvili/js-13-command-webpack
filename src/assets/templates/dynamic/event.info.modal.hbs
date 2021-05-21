@@ -5,13 +5,16 @@
             <img class="image modal__poster__small" src="{{images.[1].url}}" alt="{{name}}" title="{{name}}" />
         </div>
         <div class="modal__event__button__top">
+        {{#if auth}}    
         <button type="button" class="modal__event__button__save {{#if booked}}btn__status__save{{/if}}" data-id="{{id}}"
             data-action="booked" data-controls>{{#if booked}}
             REMOVE EVENT
             {{else}}
             SAVE EVENT
-            {{/if}}</button>
-            </div>
+            {{/if}}
+        </button>
+        </div>
+        {{/if}}
 
         <div class="modal__event__information">
             <div class="modal__image_poster">
@@ -51,21 +54,24 @@
                             </p>
                         </div>
                         <div class="modal__event__button__box">
+
+
                         <button type="button" class=" modal__event__button btn__standart  
-                        {{#if cheap}}btn__status__buy{{/if}}" data-id="{{id}}" 
-                        data-action="cheap" data-controls>
-                        {{#if cheap}}SELL TICKETS{{else}}BUY TICKETS{{/if}}
+                        {{#ifCond cheap "&&" auth}}btn__status__buy{{/ifCond}}" data-id="{{id}}" 
+                        data-action="cheap" data-controls {{#unless auth}} data-url="{{url}}"{{/unless}}>
+                        {{#ifCond cheap "&&" auth}}SELL TICKETS{{else}}BUY TICKETS{{/ifCond}}
                         </button>
+
                             </div>
                         <div class="modal__barcode_standart_vip modal__barcode ">
-                           
+        
                             <p class="modal__event__info">VIP {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
                         </div>
                         <div class="modal__event__button__box">
                         <button type="button" class=" modal__event__button btn__vip  
-                        {{#if expensive}}btn__status__buy{{/if}}"  data-action="expensive" 
-                        data-id="{{id}}" data-controls>
-                        {{#if expensive}}SELL TICKETS{{else}}BUY TICKETS{{/if}}</button>
+                        {{#ifCond expensive "&&" auth}}btn__status__buy{{/ifCond}}"  data-action="expensive" 
+                        data-id="{{id}}"  data-controls {{#unless auth}} data-url="{{url}}"{{/unless}}>
+                        {{#ifCond expensive "&&" auth}}SELL TICKETS{{else}}BUY TICKETS{{/ifCond}}</button>
                             </div>
                     </li>
                 </ul>
