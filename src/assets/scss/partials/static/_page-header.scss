@@ -297,6 +297,17 @@
   }
 }
 
+.img-hover {
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: $text-accent-color;
+  }
+}
+// .img-hover:hover .hiden-container {
+//   display: block;
+// }
+
 .reg-tittle {
   font-size: 12px;
   line-height: 1.2;
@@ -368,6 +379,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 21.5px;
   // display: flex;
   // justify-content: center;
   // padding-top: 15px;
@@ -418,7 +430,6 @@
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5px;
 
   display: flex;
   align-items: center;
