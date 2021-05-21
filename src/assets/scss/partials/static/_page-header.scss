@@ -223,18 +223,22 @@
 
 .choose-country {
   font-size: 15.5px;
-
+  padding-left: 25px;
   background-image: url('@images/header/polygon.svg');
   background-repeat: no-repeat, repeat;
-  background-position: right 30px top 50%, 0 0;
+  background-position: right 25px top 50%, 0 0;
   background-size: width= '12px' height= '12px';
   appearance: none;
 
   &:hover,
   &:focus {
-    color: $text-accent-color;
+    color: $white;
     border: $text-accent-color;
     background-image: url('@images/header/polygon.svg');
+  }
+
+  &:focus {
+    background-image: url('@images/header/polygon-rotate.svg');
   }
 
   & > option {
