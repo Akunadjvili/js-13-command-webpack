@@ -262,12 +262,16 @@
 
   & > .hiden-container {
     position: absolute;
-    left: -200px;
+    left: -170px;
     top: 5px;
 
     display: none;
     transition: $trans-duration $trans-function;
     text-align: center;
+
+    @include for-size(tablet) {
+      left: -200px;
+    }
 
     @include for-size(desktop) {
       left: -270px;
@@ -313,11 +317,15 @@
 // }
 
 .reg-tittle {
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.2;
   color: $white;
   text-align: center;
   margin-bottom: 5px;
+
+  @include for-size(tablet) {
+    font-size: 12px;
+  }
 
   @include for-size(desktop) {
     font-size: 16px;
@@ -331,7 +339,7 @@
   height: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.2;
   color: $white;
   background-color: rgba(255, 255, 255, 0.2);
@@ -383,12 +391,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 21.5px;
+  margin-top: 12px;
+
+  @include for-size(tablet) {
+    margin-top: 21.5px;
+  }
 }
 
 .animation-container {
-  padding-bottom: 13.2px;
-  margin-bottom: 10px;
+  padding-bottom: 8px;
+  margin-bottom: 5px;
+
+  @include for-size(tablet) {
+    margin-bottom: 10px;
+    padding-bottom: 13.2px;
+  }
 
   @include for-size(desktop) {
     padding-bottom: 17.5px;
@@ -405,8 +422,9 @@
 }
 
 .personal-button {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
+
   padding: 0px;
   border-radius: 50%;
   margin-left: auto;
@@ -417,6 +435,11 @@
   justify-content: center;
 
   color: $white;
+
+  @include for-size(tablet) {
+    width: 40px;
+    height: 40px;
+  }
 
   @include for-size(desktop) {
     width: 50px;
@@ -440,10 +463,15 @@
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 11px;
+  font-size: 7px;
   line-height: 1.2;
   color: $decoration-color;
   transition: $trans-duration $trans-function;
+
+  @include for-size(tablet) {
+    font-size: 11px;
+    line-height: 1.2;
+  }
 
   @include for-size(desktop) {
     font-size: 14px;
