@@ -10,6 +10,7 @@ import fabricPagination from '@components/pagination.fabric.js';
 import BookedEventProvider from '@providers/booked.events.provider.js';
 import BoughtEventProvider from '@providers/bought.events.provider.js';
 import SearchEventProvider from '@providers/search.events.provider.js';
+import AuthorEventProvider from '@providers/author.events.provider.js';
 export default class InfoEventModalForm {
   constructor({ modal, template }) {
     this.template = template;
@@ -43,7 +44,7 @@ export default class InfoEventModalForm {
       this.refs.overlay?.addEventListener('click', this.binds.hideEvent)
       const id = targetEl.dataset.attr;
       const data = { ... await eventById(`${id}`), ...storage.event(id) }
-      console.log(data);
+      // console.log(data);
       this.refs.overlay.classList.remove('is-hidden');
       // this.refs.content.classList.add('animate__animated');
       document.body.classList.add("modal-open")
@@ -66,7 +67,6 @@ export default class InfoEventModalForm {
   addEvents() {
     this.refs.controls = document.querySelectorAll('[data-controls]');
     this.refs.find = document.querySelector('[data-find]');
-    console.log(this.refs.find);
     this.refs.closeCustom = document.querySelector('button[data-action="close-modal-custom"]');
     this.refs?.closeCustom?.addEventListener('click', this.binds.hideEvent)
     this.refs?.controls?.forEach(control => control?.addEventListener('click', this.controlsHandler))
@@ -78,7 +78,17 @@ export default class InfoEventModalForm {
     this.refs?.closeCustom?.removeEventListener('click', this.binds.hideEvent)
     this.refs?.find?.removeEventListener('click', this.binds.findMore)
   }
-
+  // findMore(event) {
+  //   const targetEl = event.target;
+  //   const ids0 = targetEl.dataset.id.trim().split(",").filter(id => id !== "");
+  //   event.preventDefault();
+  //   // console.log("---", ids0);
+  //   const data = {
+  //     ids0
+  //   }
+  //   fabricPagination(AuthorEventProvider, window.eventModal, data);
+  //   this.#close();
+  // }
   findMore(event) {
     const targetEl = event.target;
     const queryInput = document.querySelector('.js-search-input');

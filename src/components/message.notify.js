@@ -13,6 +13,15 @@ const messages = function () {
         }
       })
     },
+    showInfo({ code = "unknown", message = "empty" } = {}) {
+      notifier.info(`${message}`, {
+        labels: {
+          success: `${code}`
+        }, icons: {
+          success: "check-double"
+        }
+      })
+    },
     showError({ code = "unknown", message = "empty" } = {}) {
       notifier.alert(`${message}`, {
         labels: {

@@ -30,7 +30,7 @@ export default class PaginationPlaceholder {
   draw(holder, data) {
     holder.innerHTML = this.template({ data });
     if (!data || data.length === 0) {
-      notify.showError({ code: "Data records are empty", message: "Oops ... Empty" });
+      notify.showInfo({ code: "Data records are empty", message: "Oops ... Empty" });
     }
   }
 

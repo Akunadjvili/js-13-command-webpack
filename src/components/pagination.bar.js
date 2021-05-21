@@ -317,6 +317,7 @@ export default class PaginationBar {
       this.hidePaginationButton();
       this.showPagination();
     }
+    // this.refs.cards.scrollIntoView({ behavior: "smooth" })
   }
 
   showPagination() {

@@ -20,6 +20,9 @@
 
 .back_to_top-show {
   display: block;
+  background: url('@images/back.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .back_to_top:hover {

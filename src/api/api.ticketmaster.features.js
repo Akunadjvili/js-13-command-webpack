@@ -1,4 +1,5 @@
 import ticketmaster from "@scripts/api/api.ticketmaster.service"
+import ticketmasterv2 from "@scripts/api/api.ticketmaster.service.v2"
 import { progress } from '@components/spinner.progress';
 
 export async function eventById(id) {
@@ -8,12 +9,11 @@ export async function eventById(id) {
     return data;
 }
 
-export async function eventByAuthor(page, query, country, size = 20) {
+export async function eventsByAuthor(list) {
     progress.show();
-    console.log(`/${query}`);
-    const data = await ticketmaster(`/id=${query}`)
+    const data = await Promise.all(list.map(id => ticketmasterv2(`/${id}`)))
     progress.hide();
-    return data;
+    return data
 }
 
 export async function randomEventByPage(page, size = 20) {
@@ -33,8 +33,9 @@ export async function eventsByIds(list) {
 export async function eventSearchByPage(page, query, country, size = 20) {
     const countryCode = country ? `&countryCode=${country}` : '';
     const queryLine = query ? `&keyword=${encodeURIComponent(query)}` : '';
+    // console.log("==", queryLine);
     progress.show();
-    //&source=universe
+    //&source=ticketmaster &source=ticketmaster
     const data = await ticketmaster(`/size=${size}&page=${page}${countryCode}${queryLine}`)
     progress.hide();
     return data
