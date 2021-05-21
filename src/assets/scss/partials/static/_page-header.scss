@@ -384,29 +384,6 @@
   justify-content: center;
   align-items: flex-end;
   margin-top: 21.5px;
-  // display: flex;
-  // justify-content: center;
-  // padding-top: 15px;
-
-  // & .search-field {
-  //   margin-right: 10px;
-
-  //   &:last-child {
-  //     margin-right: 0px;
-  //   }
-  // }
-
-  // @include for-size(tablet) {
-  //   padding-top: 30px;
-
-  //   & .search-field {
-  //     margin-right: 350px;
-
-  //     &:last-child {
-  //       margin-right: 0px;
-  //     }
-  //   }
-  // }
 }
 
 .animation-container {
@@ -482,116 +459,116 @@
 // -----------------------------------
 // select
 /* The container must be positioned relative: */
-.custom-select {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
+// .custom-select {
+//   margin-left: auto;
+//   margin-right: auto;
+//   position: relative;
 
-  font-family: $primary-font;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: $decoration-color;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
+//   font-family: $primary-font;
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 16px;
+//   line-height: 1.25;
+//   color: $decoration-color;
+//   background-color: rgba(255, 255, 255, 0.2);
+//   backdrop-filter: blur(20px);
 
-  border-radius: 20px;
+//   border-radius: 20px;
 
-  border: transparent;
-  outline: none;
-  cursor: pointer;
+//   border: transparent;
+//   outline: none;
+//   cursor: pointer;
 
-  &:hover,
-  &:focus {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom: 1px solid #939393;
-  }
+//   &:hover,
+//   &:focus {
+//     border-bottom-left-radius: 0px;
+//     border-bottom-right-radius: 0px;
+//     border-bottom: 1px solid #939393;
+//   }
 
-  .custom-select-active {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom: 1px solid #939393;
-  }
+//   .custom-select-active {
+//     border-bottom-left-radius: 0px;
+//     border-bottom-right-radius: 0px;
+//     border-bottom: 1px solid #939393;
+//   }
 
-  @include for-size(tablet) {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
+//   @include for-size(tablet) {
+//     margin-left: 0px;
+//     margin-right: 0px;
+//   }
+// }
 
-.custom-select select {
-  display: none; /*hide original SELECT element: */
-}
+// .custom-select select {
+//   display: none; /*hide original SELECT element: */
+// }
 
-.select-selected {
-  padding: 10px 20px;
-  text-align: start;
-  //   background: rgba(255, 255, 255, 0.2);
-  //   backdrop-filter: blur(20px);
-  // border-bottom-left-radius: 0px;
-  // border-bottom-right-radius: 0px;
-}
+// .select-selected {
+//   padding: 10px 20px;
+//   text-align: start;
+//   //   background: rgba(255, 255, 255, 0.2);
+//   //   backdrop-filter: blur(20px);
+//   // border-bottom-left-radius: 0px;
+//   // border-bottom-right-radius: 0px;
+// }
 
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: '';
-  top: 16px;
-  right: 20px;
-  width: 0;
-  height: 0;
-  border: 7px solid transparent;
-  border-color: $decoration-color transparent transparent transparent;
-}
+// /* Style the arrow inside the select element: */
+// .select-selected:after {
+//   position: absolute;
+//   content: '';
+//   top: 16px;
+//   right: 20px;
+//   width: 0;
+//   height: 0;
+//   border: 7px solid transparent;
+//   border-color: $decoration-color transparent transparent transparent;
+// }
 
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent $decoration-color transparent;
-  top: 7px;
-}
+// /* Point the arrow upwards when the select box is open (active): */
+// .select-selected.select-arrow-active:after {
+//   border-color: transparent transparent $decoration-color transparent;
+//   top: 7px;
+// }
 
-/* style the items (options), including the selected item: */
-.select-items div {
-  padding: 1px 20px;
+// /* style the items (options), including the selected item: */
+// .select-items div {
+//   padding: 1px 20px;
 
-  // background-color: rgba(255, 255, 255, 0.2);
-  // backdrop-filter: blur(20px);
-  cursor: pointer;
-}
+//   // background-color: rgba(255, 255, 255, 0.2);
+//   // backdrop-filter: blur(20px);
+//   cursor: pointer;
+// }
 
-/* Style items (options): */
-.select-items {
-  position: absolute;
+// /* Style items (options): */
+// .select-items {
+//   position: absolute;
 
-  text-align: start;
-  color: #cccccc;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+//   text-align: start;
+//   color: #cccccc;
+//   background: rgba(255, 255, 255, 0.2);
+//   backdrop-filter: blur(20px);
+//   top: 100%;
+//   left: 0;
+//   right: 0;
+//   z-index: 99;
+//   border-bottom-left-radius: 20px;
+//   border-bottom-right-radius: 20px;
 
-  //
-}
+//   //
+// }
 
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
+// /* Hide the items when the select box is closed: */
+// .select-hide {
+//   display: none;
+// }
 
-.select-items div:hover,
-.same-as-selected {
-  &:last-child {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
+// .select-items div:hover,
+// .same-as-selected {
+//   &:last-child {
+//     border-bottom-left-radius: 20px;
+//     border-bottom-right-radius: 20px;
+//   }
 
-  color: $white;
-  background-color: $text-accent-color;
-  cursor: pointer;
-}
+//   color: $white;
+//   background-color: $text-accent-color;
+//   cursor: pointer;
+// }
